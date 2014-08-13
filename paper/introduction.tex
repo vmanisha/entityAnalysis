@@ -1,14 +1,39 @@
 
-Everyday people perform millions of queries against search engines. Often different people formulate
-the the same \emph{information need} in different ways based on their culture, previous experiences,
+Everyday people perform millions of queries against search engines. Often different people express
+the same \emph{information need} using different terms due to their culture, previous experiences,
 age \dots. Being able to analyze this huge quantity of inhomogeneous data is a fundamental 
-task for search engine, and in general for all the website owners that can analyze queries 
-performed for reaching their website. \emph{Web Usage Mining}\diego{add citations} allows 
-to study the user needs in order to improve the user satisfaction an engagement on the website. 
+task for a search engine, and in general for all the website owners that want to analyze queries 
+performed for reaching their website and to profile users. \emph{Web Usage Mining}~\cite{silvestri2010mining}  
+studies the user needs in order to improve the user satisfaction an engagement on the website. 
 
 \diego{describe what usually a query log contains?}
-A well known fact is the sparsity of the sparsity of the logs. In 2007, Yates \etal\cite{baeza2007impact} 
+A well known fact is the sparsity of the logs. In 2007, Yates \emph{ et al.}~\cite{baeza2007impact} 
 analyzed one year of logs and found that the $64\%$ of the queries were performed by only one user.
 Usually the frequency distribution of the queries follow the \emph{Zipf law}: there is a small 
 set of queries frequently searched by different users (the \emph{head}) and a large set of queries
-searched only by a few (or just one) users. This is large set is called the \emph{long tail}.
+searched only by a few (or just one) users. This large set is called the \emph{long tail}.
+
+While it is quite simple to analyze queries in the head, it is not so easy to manage the queries in the long tail, 
+due to the fact that they are a huge number and they are all different. In this work we propose
+to exploit \textbf{Entity Linking} (EL) for analyzing the logs. Entity Linking is a technique 
+that allows to enrich raw text with entities from a knowledge base; recently many approached for applying 
+EL to queries have been proposed and evaluated during the Entity Recognition and Disambiguation Challenge\footnote{
+\url{http://web-ngram.research.microsoft.com/ERD2014/}} organized by Microsoft. 
+
+Hollink \emph{et al.}~\cite{hollink2013web} exploited EL for web usage mining: in their inspiring work they consider a sample of 
+queries from Yahoo! Search in the United States, and they filter only queries about movies. The focus
+of their work is on studying the \emph{types} of the queries (e.g., trailer, movies, dvd), and on finding
+type patterns among sessions and queries. In our research we are interested in studying the 
+relationship between the head and the tail of a query log
+through the entities potentially referred by the queries. More in detail, our research questions are:
+\begin{itemize}
+	\item are queries in the tail just a different way to express information needs of popular queries? 
+	\item could we find tail queries that express needs that are not in the head (let us call them \emph{tail needs})?
+	\item can we find a relationship between tail needs and \emph{head needs}?  
+\end{itemize} 
+
+In the following we will describe the technique that we adopted for annotating a large query log with entities 
+and our preliminary findings on the enriched log.
+
+
+ 

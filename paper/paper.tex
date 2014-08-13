@@ -42,10 +42,10 @@
 \usepackage{enumitem}
 \usepackage{xspace}
 
-\usepackage{pgfplots}
+%\usepackage{pgfplots}
 
-\usepackage{tikz}
-\usetikzlibrary{positioning}
+%\usepackage{tikz}
+%\usetikzlibrary{positioning}
 
 \pdfpagewidth=8.5in
 \pdfpageheight=11in
@@ -54,8 +54,8 @@
 \definecolor{myblueii}{RGB}{73,121,193}
 \definecolor{mygreen}{RGB}{202,217,126}
 
-\pgfdeclarelayer{background}
-\pgfsetlayers{background,main}
+%\pgfdeclarelayer{background}
+%\pgfsetlayers{background,main}
 
 
 \newcommand{\comment}[2]{[\textbf{\color{red} #1}: \emph{#2}]\\}%
@@ -74,6 +74,7 @@
 
 \newcommand{\piccino}[1]{ {\footnotesize #1}}
 \newcommand{\etal}[1]{ {\emph{et al.}\~{}}}
+%\newcommand{\eg}[1]{ {\emph{e.g.,}\~{}}}
 
 
 \newtheorem{example}{Example}[section]
@@ -107,7 +108,7 @@
 \widowpenalty = 10000
 
 
-\title{We need a title}
+\title{Mining User Needs in the Long Tail through Entity Linking}
 %\subtitle{[Extended Abstract]
 %\titlenote{A full version of this paper is available as
 %\textit{Author's Guide to Preparing ACM SIG Proceedings Using
@@ -180,27 +181,31 @@ TODO
 %\vspace{-0.3cm}
 %\terms{Algorithms, Design, Experimentation.}
 %\vspace{-0.5cm}
-\keywords{Entity linking; Annotations; Evaluation.}
+\keywords{Entity linking; Annotations; Web Usage Mining.}
 
 
 \section{Introduction}
 
 \input{introduction}
 
-\manisha{observation:}
+%\manisha{observation:}
 
 %\section{Related works}
 
-\input{related-works}
+%\input{related-works}
 
-%\begin{figure}
-%\input{images/dexter}
-%\end{figure}
+\section{Enriching AOL query log data}
+
+\input{aol}
+
+\section{Analysis}
+
+\input{analysis}
 
 \section{Future Roadmap}
 
 \input{future-works}
-\paragraph{\bf {Acknowledgements}}
+%\paragraph{\bf {Acknowledgements}}
 %\section*{Acknowledgements}
 %\vspace{-0.4cm}
 \bibliographystyle{abbrv}
