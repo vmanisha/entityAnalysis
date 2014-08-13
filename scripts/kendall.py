@@ -18,14 +18,18 @@ def main():
     
     with open(sys.argv[1]) as input1:
         with open(sys.argv[2]) as input2:
-           
+            
             x1 = map(lambda x: x.strip(), input1.readlines())
             x2 = map(lambda x: x.strip(), input2.readlines())
             size1 = len(x1)
             size2 = len(x2)
             x1 = x1[:size]
             x2 = x2[:size]
-            tau, p_value = stats.kendalltau(x1, x2)
+            try:
+                tau, p_value = stats.kendalltau(x1, x2)
+            except:
+                tau = -1
+                p_value = -1
             #print x1,x2
             jaccard = jaccard_distance(x1,x2)
             print str(lp)+"\t"+str(commonness)+"\t"+str(size)+"\t"+str(size1)+"\t"+str(size2)+"\t"+str(tau)+"\t"+str(p_value)+"\t"+str(jaccard)
