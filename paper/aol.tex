@@ -13,14 +13,27 @@ analysis on these two sets.
 \paragraph{Enriching the Queries}
 We are interested in studying the entities that may occur in queries in order to find if there are connections between the queries in \head{} and in \tail{}.
 The Entity Linking task consists in identifying  small fragments of text (that we call \emph{spots}) referring to any entity (represented by a URI) 
-within knowledge base. Usually the task is organized in two steps: the i) \textbf{Spot Detection}: given the input document (in our case a query), 
+within a knowledge base. Usually the task is organized in two steps: the i) \textbf{Spot Detection}: given the input document (in our case a query), 
 the spots are detected and for each spot a list of candidate entities is retrieved; and the ii) \textbf{Disambiguation}:
 for each ambiguous spot (e.g., \texttt{brazil} could refer to the state, or the football team), a single  entity is 
 selected  to be linked to the spot.
 
-In this preliminary work we decided to consider only distinct the queries and not the user sessions, and we performed only the first step of the disambiguation 
-process, the spot detection. We do not perform the disambiguation for two reasons: i) we are considering only the queries and not all the sessions that contain 
-them, so the context is really small and probably not useful for disambiguating correctly the query, and ii) Disambiguation is computationally more expensive, 
-while spot detection is performed in $O(t)$, where $t$ is the number of terms in the query, disambiguation is $O(t^2 \cdot c)$ where $c$ is the maximum 
-number of entity candidates for a query.   
+In this preliminary work we decided to work with the queries and without considering the user sessions. We performed only the first step of the Entity Linking 
+process: the spot detection. We do not perform the disambiguation for two reasons: i) we are considering only the queries and not all the sessions that contain 
+them, so the context is really small and probably not useful for disambiguating correctly the query, and ii) Disambiguation is usually computationally more expensive
+since it involves the pairwise comparison of the candidate entities of the spots
+detected in order to compute the \emph{relatedness} distance between them.
+
+We performed the spot detection over all the queries in \tail{} and \head{} using the Dexter~\cite{ceccarelli2013dexter} entity linker. 
+The linker exploits a dictionary containing more than 10 million spots extracted from titles and anchor texts of a recent English dump 
+of Wikipedia. Given a query, all the possible n-grams are generated and matched against the dictionary. We annotated $13,977$ ($70\%$)
+queries in \head{} with at least one spot, and respectively $4,901,987$ ($63\%$) queries in \tail{}. For each spot we also collected: 
+i) the \textbf{position in the query}, the start and end position in the query ii) the \textbf{link probability (lp)} the probability
+for the spot to link to an entity, computed as the number of occurrences of the spot as anchor text in Wikipedia divided by the number of occurrences
+as simple text and iii) \textbf{the candidate entities}, a list of possible candidate entities for the spot; for each candidate we also retrieve
+its \textbf{commonness}, the probability $p(e|s)$ that the spot $s$ refers to the entity $e$ computed considering how many times on Wikipedia
+the anchor text $s$ is referring to the page for the entity $e$.
+
+
+
 
