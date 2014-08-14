@@ -8,23 +8,24 @@ and entities occuring in the tail as `tail entity'.
 %1.no of queries with head and tail ent
 %2.Head and tail entity histogram for queries with more than 1 ent 
 We begin by analyzing the volume of entities found in the tail. With X unique tail queries, we 
-found that Y\% contain atleast one entity. Of queries containing more than one entity,  
-Z\% queries contain atleast one head entity. Table \ref{table:entDist} shows total number of 
-queries with number of entities. 
-
+found that 63.2\% contain atleast one entity. Of queries containing more than one entity,  
+86.2\% queries contain atleast one head entity. Table \ref{table:entDist} shows the number of 
+queries, corresponding number of entities and the head to tail entity ratio in query. 
+Head to Tail entity ratio is calculated by dividing number of head entities with number of 
+tail entities in the query.
 \begin{table}
-\caption{#Entities vs #Queries}
+\caption{\#Entities vs \#Queries}
 \label{table:entDist}
 \centering
-\begin{tabular}{|l|l|}
+\begin{tabular}{|l|l|l\}
 \hline
-#Entities & #Queries \\ \hline
-1 & 2622873 \\hline
-2 & 1731256 \\ \hline
-3 & 457946 \\ \hline
-4 & 74125 \\ \hline
-5 & 10757 \\ \hline
-6 & 2416 \\ \hline
+\#Entities & \#Queries & head\-tail Ratio \\ \hline
+1 & 2622873 & na\\hline
+2 & 1731256 & 0.48\\ \hline
+3 & 457946  & 0.91\\ \hline
+4 & 74125 & 1.09 \\ \hline
+5 & 10757 & 1.07\\ \hline
+6 & 2416  & 0.97\\ \hline
 \end{tabular}
 \end{table}
 
