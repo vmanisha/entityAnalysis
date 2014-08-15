@@ -27,7 +27,20 @@ means that almost all the spots and entities in the head appear in the tail.
 We then analyze spots and entities frequency distributions in head and tail, 
 depicted in Figure~\ref{img:distributions}: it is interesting note that while queries 
 in head and tail follow totally different distributions, when we look at their 
-spots/entities the distributions are similar \diego{add more comments on the graph}
+spots/entities the distributions are similar. In particular, as expected, spots and entities 
+in head follow a similar distribution, as well as spots and entities in the tail. 
+
+Do the most frequent entities in \ehead and \etail the same? No. We sorted the entities
+based on their total frequency within all the queries of \head{} and \tail{} and we compared
+the ranks with different cuts ($50$, $100$, $500$, $5000$). We then computed the Jaccard distance
+between the ranked lists, obtaining $0.25$ when considering the most $5000$ most frequent entities,
+and $0.21$ considering the most frequent spots. For smaller cuts the Jaccard was always lower, 
+when we consider the top frequent $50$ entities, Jaccard equals to $0.05$. In Table~\ref{tab:top-frequent}
+we show the most frequent entities and spots in the head and in the tail. It is interesting to 
+observe that, while the head contains several navigational entities (google, yahoo \dots), the 
+tail contains several US countries.
+
+
 
 \begin{figure}
   \centering
@@ -91,6 +104,7 @@ craigslist     & 27,222   &  American\_Idol     & 28,890   &  georgia 	 &	14,525
 american idol  & 23,665   &  Yahoo!\_Mail       & 28,238   &  black   	 &	13,921   &   Michigan        & 15,763 \\
 \bottomrule
 \end{tabular}
+\label{tab:top-frequent}
 \caption{Most 15 frequent spots and entities detected in the head (\shead{}, \ehead{}) and in the tail (\stail{}, \etail{})}
 \end{figure*}
 
