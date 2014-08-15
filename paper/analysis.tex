@@ -1,4 +1,28 @@
-\subsection{Entity Stats}
+Let us first define \shead{} and \stail{}, the sets containing the spots detected in the 
+\head{} and \tail{}. In this preliminary work we decided also to map each spot 
+to the entity with the \emph{highest commonness}, i.e., the highest probability $p(e|s)$
+to be associated with the spot $s$ considered. Let us denote with \ehead{} and \etail{}
+the sets containing the most probable entities for the spots. It is worth to note
+that this mapping could collapse different spots on the same entity (e.g., \emph{united states} and 
+\emph{usa} will both refer the United States country). 
+
+We identified $11,152$ ($|$\shead{}$|$)  distinct spots and $8,949$ ($|$\ehead{}$|$) distinct 
+entities in the head. In the tail, we found $550,953$ ($|$\stail{}$|$) distinct spots and 
+$379,342$ ($|$\etail{}$|$) distinct entities. It  is also interesting to note that 
+$|$  \shead{} $\cap$ \stail{} $| = 11,027 |$  $|$ \ehead{} $\cap$ \etail{} $| = 8,888$, that 
+means that almost all the spots and entities in the head appear in the tail. 
+We then analyze spots and entities frequency distributions in head and tail: 
+in Figure~\ref{img:distributions}
+
+\begin{figure}[t]
+
+  \centering
+    \includegraphics[width = 0.5\textwidth]{images/head-tail-ent-spot-dist.png}
+	\caption{Frequency distributions for spots and entities in \head{} (spot-head, ent-head) and \tail{} (spot-tail, ent-tail)}
+\label{img:distributions}
+\end{figure}
+
+
 
 
 \todo{introduce \shead{} \stail{} \ehead{} \etail{} and  
