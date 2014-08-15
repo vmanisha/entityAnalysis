@@ -1,8 +1,32 @@
 \subsection{Entity Stats}
+
+
+\todo{introduce \shead{} \stail{} \ehead{} \etail{} and  
+\begin{itemize}
+	\item comment table with commonness and link probability + top entities/spots
+	\item put total numbers
+	\item put global distribution
+\end{itemize} 
+}
+
+\todo{introduce the comparison between tail and head }
+
+\todo{describe Figure~\ref{img:headTailEntPercent}}
+
+\todo{explain how head tail ratio is computed, present and comment the graph }
+
+\todo{conclusions and future works (e.g, use a modern query log, improve entity linking on queries, considering sessions)}
+
+
+
 Entities in Head ($E_{head}$): 8949
 Entities in Tail ($E_{tail}$): 379342
 Total Count of entities in Head : 6562784
 Total Count of entities in Tail : 9764565
+
+
+
+
 
 Tail queries have been often mapped to the head \cite{} by using bag-of-word representations.
 Lately they have also been linked with the head queries through entities. However, in this work
@@ -143,6 +167,59 @@ Popularity & \#Entities & Queries \\ \hline
 %\item Frequency distribution of entities in head and tail
 %\item Head and tail entity distribution in queries
 %\end{itemize}
+
+
+\begin{tabular}{ccccc}
+\toprule
+link probability & commonness & $k$ & $J^{spot}_k$ & $J^{top entity}_k$ \\
+\midrule
+\multirow{6}{*}{$0.3$} &  \multirow{3}{*}{$0.3$} & $50$ &  $0.01$  &   $0.03$  \\
+					 &						   & $500$ 	&  $0.11$  &   $0.14$  \\
+					 &						   & $5,000$ & $0.21$   &  $0.25$    \\
+\cline{2-5}
+					 &	\multirow{3}{*}{$0.7$}  & $50$      & $0.01$   &   $0.03$ \\
+					 &						   & $500$   	& $0.11$   &   $0.14$  \\
+					 &						   & $5,000$ 	& $0.21$   &   $0.27$    \\
+					
+\midrule		
+\multirow{6}{*}{$0.7$} &  \multirow{3}{*}{$0.3$}   & $50$  & $0.05$   &   $0.06$  \\
+					 &						   & $500$ 	   &   $0.11$   &    $0.13$  \\
+					 &						   & $5,000$   &   $0.22$   &  $0.26$  \\
+\cline{2-5}
+
+					 &	\multirow{3}{*}{$0.7$}  & $50$   &  $0.05$   &  $0.06$  \\
+					 &						   & $500$   &  $0.11$   &   $0.15$   \\
+					 &						   & $5,000$ &  $0.22$   &   $0.28$  \\
+\bottomrule
+\end{tabular}
+
+\begin{figure*}
+	\footnotesize
+	\centering
+\begin{tabular}{lc|lc|lc|lc}
+\toprule
+\multicolumn{4}{c}{\head{}} & \multicolumn{4}{c}{\tail{}}\\
+\multicolumn{2}{c}{\shead{}} & \multicolumn{2}{c}{\ehead{}} & \multicolumn{2}{c}{\stail{}} & \multicolumn{2}{c}{\etail{}}\\
+\midrule
+google         & 342,602  &  Google  		   & 349,337  &  florida 	 &	47,718	&	Florida 		& 49,366 \\
+myspace        & 194,093  &  Yahoo\!  		   & 299,718  &  texas  	 &	 37,388  &   Texas   		& 37,526 \\
+yahoo          & 142,361  &  Myspace 		   & 289,353  &  ohio    	 &	31,861   &   Ohio    		& 31,905 \\			
+ebay           & 142,257  &   EBay   		   & 187,633  &  edu     	 &	26,641   &   New\_York        & 28,396 \\
+yahoo.com      & 104,696  &  MapQuest          & 135,179  &  state   	 &	26,066   &   .edu    		& 26,642 \\
+mapquest       & 88,617   &  Google\_Search     & 98,112   &  california  &   25,233  &   U.S.\_state      & 26,392 \\
+google com     & 85,670   &  Hotmail           & 53,925   &  new york    &   24,865  &   California      & 25,859 \\
+my space       & 48,401   &	  Bank\_of\_America  & 46,922   &  hotel   	 &	20,018   &   Real\_estate     & 25,232 \\
+www.yahoo.com  & 44,198   &  Craigslist        & 45,586   &  real estate &   19,702  &   Myspace 		& 24,998 \\
+internet       & 39,865   &  Ask.com           & 39,873   &  myspace 	 &	18,533   &   Floruit 		& 24,207 \\
+ebay com       & 30,652   &  Internet          & 39,865   &  restaurant  &  17,065   &   Restaurant      & 21,996 \\
+hotmail.com    & 28,492   &  Pornography       & 35,089   &  michigan    &   15,635  &   Hotel   		& 20,289 \\
+map quest      & 27,949   &  Tattoo            & 33,113   &  new jersey  &   14,813  &   Nudity  		& 18,245 \\
+craigslist     & 27,222   &  American\_Idol     & 28,890   &  georgia 	 &	14,525   &   United\_States   & 16,680 \\
+american idol  & 23,665   &  Yahoo!\_Mail       & 28,238   &  black   	 &	13,921   &   Michigan        & 15,763 \\
+\bottomrule
+\end{tabular}
+\end{figure*}
+
 
 
 
