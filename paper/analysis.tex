@@ -1,9 +1,9 @@
-Let us first define \shead{} and \stail{}, the sets containing the spots detected in the 
-\head{} and \tail{}. In this preliminary work we decided also to map each spot 
-to the entity with the \emph{highest commonness}, i.e., the highest probability $p(e|s)$
-to be associated with the spot $s$ considered.
+The sets containing the spots detected in the 
+\head{} and \tail{} are refered to as \shead{} and \stail{} respectively. 
+For this work, we decided to map each spot to the entity with the \emph{highest commonness}, 
+i.e., the highest probability $p(e|s)$ to be associated with the spot $s$ in question.
 
-Let us provide some real examples of annotations (spots are highlighted in bold).
+Some real query examples with annotations(spots are highlighted in bold) are provided below.
 \begin{itemize}
 \item \fbox{\textbf{first citizens bank} and trust \textbf{raleigh nc}} is annotated with the entities 
 \texttt{Raleigh,\_North\_Carolina} and \\ \texttt{First\_Citizens\_Bank};
@@ -14,22 +14,20 @@ Let us provide some real examples of annotations (spots are highlighted in bold)
  \end{itemize}
 
 
-Let us denote with \ehead{} and \etail{}
-the sets containing the most probable entities for the spots. It is worth to note
-that this mapping could collapse different spots on the same entity (e.g., \emph{united states} and 
-\emph{usa} will both refer the United States country). 
+We denote with \ehead{} and \etail{}, the sets containing the most probable entities for the spots. 
+It is worth noting that this mapping could collapse different spots on the same entity (e.g., \emph{united states} and 
+\emph{usa} will both refer to United States). 
 
-We identified $11,152$ ($|$\shead{}$|$)  distinct spots and $8,949$ ($|$\ehead{}$|$) distinct 
-entities in the head. In the tail, we found $550,953$ ($|$\stail{}$|$) distinct spots and 
+There are $11,152$ ($|$\shead{}$|$)  distinct spots and $8,949$ ($|$\ehead{}$|$) distinct 
+entities in the head. In the tail, the system identifies $550,953$ ($|$\stail{}$|$) distinct spots and 
 $379,342$ ($|$\etail{}$|$) distinct entities. It  is also interesting to note the size of the 
 intersections: \mbox{$|$\shead{}$\cap$\stail{}$|=11,027$}  $|$\ehead{}$\cap$\etail{}$| = 8,888$,
 this means that almost all the spots and entities in the head appear in the tail. 
 
-In Figure~\ref{img:distributions} we analyze spots and entities frequency distributions in head and tail:
-it is interesting to note that while queries 
-in head and tail follow totally different distributions, when we look at their 
-spots/entities the distributions are similar. In particular, as expected, spots and entities 
-in head follow a similar distribution, as well as spots and entities in the tail. 
+Figure~\ref{img:distributions} shows the frequency distribution of both head and tail spots as well as head and tail entities:
+it is interesting to note that while queries in head and tail follow totally different distributions, when we look at their 
+spots/entities the distributions are similar. In particular, as expected, head spots and head entities 
+follow a similar distribution, as well as the spots and entities in the tail. 
 
 Do the most frequent entities in \ehead{} and \etail{} overlap? Not so much: we sorted the entities
 based on their total frequency within all the queries of \head{} and \tail{} and we compared
@@ -40,8 +38,6 @@ when we consider the top frequent $50$ entities, Jaccard equals to $0.05$. In Ta
 we show the most frequent entities and spots in the head and in the tail. It is interesting to 
 observe that, while the head contains several navigational entities (google, yahoo \dots), the 
 tail contains several US countries.
-
-
 
 \begin{figure}
   \centering
@@ -119,7 +115,7 @@ that appear \emph{only} in the tail ($\in$ \etail{} $\setminus$ \ehead{})
 or both head and tail entities. Figure \ref{img:headTailEntPercent} shows the percentage of 
 queries with only head or tail entities or both. One can clearly see that a large percentage of tail 
 queries contain both head and tail entities. Moreover, this percentage gradually rises with the 
-number of entities in the query. This could mean that in longer queries people is looking 
+number of entities in the query. This could mean that in longer queries people look
 for connections among popular entities and rare entities. 
 
 \begin{figure}
