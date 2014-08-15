@@ -12,6 +12,13 @@ Some real query examples with annotations(spots are highlighted in bold) are pro
 \item \fbox{\textbf{tennessee walking horses} in \textbf{missouri}} is annotated with the entities  \texttt{Missouri} and  \texttt{Tennessee\_Walking\_Horse};
 \item \fbox{\textbf{i love you} \textbf{remix} featuring \textbf{jim jones} and \textbf{black rob}} is annotated with the entities  \texttt{I\_Love\_You,\_Man}, \texttt{Remix}, \texttt{Jim\_Jones\_(rapper)}, \texttt{Black\_Rob}.
  \end{itemize}
+ 
+ \begin{figure}
+   \centering
+     \includegraphics[width = 0.5\textwidth]{images/head-tail-ent-spot-dist.png}
+ 	\caption{Frequency distributions for spots and entities in \head{} (spot-head, ent-head) and \tail{} (spot-tail, ent-tail)}
+ \label{img:distributions}
+ \end{figure}
 
 
 We denote with \ehead{} and \etail{}, the sets containing the most probable entities for the spots. 
@@ -39,12 +46,7 @@ we show the most frequent entities and spots in the head and in the tail. It is 
 observe that, while the head contains several navigational entities (google, yahoo \dots), the 
 tail contains several US countries.
 
-\begin{figure}
-  \centering
-    \includegraphics[width = 0.5\textwidth]{images/head-tail-ent-spot-dist.png}
-	\caption{Frequency distributions for spots and entities in \head{} (spot-head, ent-head) and \tail{} (spot-tail, ent-tail)}
-\label{img:distributions}
-\end{figure}
+
 
 
 
