@@ -2,6 +2,7 @@ import sys
 #import ast
 import json
 <<<<<<< HEAD
+<<<<<<< HEAD
 from stats import loadEntDict
 MENTION = 'mention'
 QUERY = 'query'
@@ -162,3 +163,5 @@ def main(argv):
 
 if __name__ == '__main__':
 	main(sys.argv)
+
+

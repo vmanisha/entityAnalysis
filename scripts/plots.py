@@ -56,3 +56,10 @@ if __name__ == '__main__':
 #plot the ratios of head:tail with respect to number of entities in query
 
 #plot the band of entity popularity
+#plot the ratios of head:tail with respect to number of entities in query
+
+#plot the band of entity popularity
+if __name__ == '__main__':
+	arg = sys.argv
+	plot1(arg[1])
+>>>>>>> eef427dca72eb61f985fc82e193cf047f111c6b9
