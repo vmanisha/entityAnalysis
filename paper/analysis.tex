@@ -7,11 +7,11 @@ Let us provide some real examples of annotations (spots are highlighted in bold)
 \begin{itemize}
 \item \fbox{\textbf{first citizens bank} and trust \textbf{raleigh nc}} is annotated with the entities 
 \texttt{Raleigh,\_North\_Carolina} and \\ \texttt{First\_Citizens\_Bank};
-\item \fbox{\textbf{internal revenue service} de \textbf{puerto roco}} is annotated with the entities \texttt{Roco} and
-\texttt{Internal\_Revenue\_Service};
-\item \fbox{\textbf{tennessee walking horses} in \textbf{missouri}} is annotated with the entities  \texttt{Missouri} and  \texttt{Tennessee\_Walking\_Horse}
-% \textbf{i love you} \textbf{remix} featuring \textbf{jim jones} and \textbf{black rob} & I\_Love\_You,\_Man, Remix & Jim\_Jones\_(rapper), Black\_Rob \\ \hline
-\end{itemize}
+% \item \fbox{\textbf{internal revenue service} de \textbf{puerto roco}} is annotated with the entities \texttt{Roco} and
+% \texttt{Internal\_Revenue\_Service};
+\item \fbox{\textbf{tennessee walking horses} in \textbf{missouri}} is annotated with the entities  \texttt{Missouri} and  \texttt{Tennessee\_Walking\_Horse};
+\item \fbox{\textbf{i love you} \textbf{remix} featuring \textbf{jim jones} and \textbf{black rob}} is annotated with the entities  \texttt{I\_Love\_You,\_Man}, \texttt{Remix}, \texttt{Jim\_Jones\_(rapper)}, \texttt{Black\_Rob}.
+ \end{itemize}
 
 
 Let us denote with \ehead{} and \etail{}
@@ -21,16 +21,17 @@ that this mapping could collapse different spots on the same entity (e.g., \emph
 
 We identified $11,152$ ($|$\shead{}$|$)  distinct spots and $8,949$ ($|$\ehead{}$|$) distinct 
 entities in the head. In the tail, we found $550,953$ ($|$\stail{}$|$) distinct spots and 
-$379,342$ ($|$\etail{}$|$) distinct entities. It  is also interesting to note that 
-$|$  \shead{} $\cap$ \stail{} $| = 11,027 |$  $|$ \ehead{} $\cap$ \etail{} $| = 8,888$, that 
-means that almost all the spots and entities in the head appear in the tail. 
-We then analyze spots and entities frequency distributions in head and tail, 
-depicted in Figure~\ref{img:distributions}: it is interesting note that while queries 
+$379,342$ ($|$\etail{}$|$) distinct entities. It  is also interesting to note the size of the 
+intersections: \mbox{$|$\shead{}$\cap$\stail{}$|=11,027$}  $|$\ehead{}$\cap$\etail{}$| = 8,888$,
+this means that almost all the spots and entities in the head appear in the tail. 
+
+In Figure~\ref{img:distributions} we analyze spots and entities frequency distributions in head and tail:
+it is interesting to note that while queries 
 in head and tail follow totally different distributions, when we look at their 
 spots/entities the distributions are similar. In particular, as expected, spots and entities 
 in head follow a similar distribution, as well as spots and entities in the tail. 
 
-Do the most frequent entities in \ehead and \etail the same? No. We sorted the entities
+Do the most frequent entities in \ehead{} and \etail{} overlap? Not so much: we sorted the entities
 based on their total frequency within all the queries of \head{} and \tail{} and we compared
 the ranks with different cuts ($50$, $100$, $500$, $5000$). We then computed the Jaccard distance
 between the ranked lists, obtaining $0.25$ when considering the most $5000$ most frequent entities,
