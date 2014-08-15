@@ -41,7 +41,7 @@
 \usepackage{stmaryrd}
 \usepackage{enumitem}
 \usepackage{xspace}
-
+\usepackage{multirow}
 %\usepackage{pgfplots}
 
 %\usepackage{tikz}
@@ -70,7 +70,10 @@
 \newcommand{\todo}[1]{\comment{todo}{#1}}
 \newcommand{\tail}[1]{$Q_{tail}${}}
 \newcommand{\head}[1]{$Q_{head}${}}
-
+\newcommand{\stail}[1]{$S_{tail}${}}
+\newcommand{\shead}[1]{$S_{head}${}}
+\newcommand{\etail}[1]{$E_{tail}${}}
+\newcommand{\ehead}[1]{$E_{head}${}}
 
 \newcommand{\dexter}[1]{{\sf Dexter}\xspace}
 
@@ -211,6 +214,7 @@ and \emph{rare queries}, usually performed by only one user.
 \input{aol}
 
 \section{Analysis}
+\input{analysis.diego}
 
 \input{analysis}
 
