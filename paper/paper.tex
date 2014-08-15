@@ -1,0 +1,250 @@
+% THIS IS SIGPROC-SP.TEX - VERSION 3.1
+% WORKS WITH V3.2SP OF ACM_PROC_ARTICLE-SP.CLS
+% APRIL 2009
+%
+% It is an example file showing how to use the 'acm_proc_article-sp.cls' V3.2SP
+% LaTeX2e document class file for Conference Proceedings submissions.
+% ----------------------------------------------------------------------------------------------------------------
+% This .tex file (and associated .cls V3.2SP) *DOES NOT* produce:
+%       1) The Permission Statement
+%       2) The Conference (location) Info information
+%       3) The Copyright Line with ACM data
+%       4) Page numbering
+% ---------------------------------------------------------------------------------------------------------------
+% It is an example which *does* use the .bib file (from which the .bbl file
+% is produced).
+% REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission,
+% you need to 'insert'  your .bbl file into your source .tex file so as to provide
+% ONE 'self-contained' source file.
+%
+% Questions regarding SIGS should be sent to
+% Adrienne Griscti ---> griscti@acm.org
+%
+% Questions/suggestions regarding the guidelines, .tex and .cls files, etc. to
+% Gerald Murray ---> murray@hq.acm.org
+%
+% For tracking purposes - this is V3.1SP - APRIL 2009
+
+%\documentclass{style/acm_proc_article-sp}
+
+\documentclass{style/sig-alternate-2013}[9pt]
+
+\usepackage{color}
+%\usepackage{pgfplotstable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{colortbl}
+%\usepackage{algorithm2e}
+%\usepackage{algorithm}
+\usepackage{url}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage[show]{style/chato-notes}
+%\usepackage{pgfplots}
+
+%\usepackage{tikz}
+%\usetikzlibrary{positioning}
+
+\pdfpagewidth=8.5in
+\pdfpageheight=11in
+
+\definecolor{mybluei}{RGB}{124,156,205}
+\definecolor{myblueii}{RGB}{73,121,193}
+\definecolor{mygreen}{RGB}{202,217,126}
+
+%\pgfdeclarelayer{background}
+%\pgfsetlayers{background,main}
+
+
+\newcommand{\comment}[2]{[\textbf{\color{red} #1}: \emph{#2}]\\}%
+% uncomment below to hide comments
+%\renewcommand{\comment}[2]{}
+
+\newcommand{\diego}[1]{\comment{diego}{#1}}
+\newcommand{\claudio}[1]{\comment{claudio}{#1}}
+\newcommand{\manisha}[1]{\comment{manisha}{#1}}
+
+
+%\newcommand{\todo}[1]{\comment{todo}{#1}}
+
+
+\newcommand{\tail}[1]{$Q_{tail}${}}
+\newcommand{\head}[1]{$Q_{head}${}}
+\newcommand{\stail}[1]{$S_{tail}${}}
+\newcommand{\shead}[1]{$S_{head}${}}
+\newcommand{\etail}[1]{$E_{tail}${}}
+\newcommand{\ehead}[1]{$E_{head}${}}
+
+\newcommand{\dexter}[1]{{\sf Dexter}\xspace}
+
+
+\newcommand{\piccino}[1]{ {\footnotesize #1}}
+\newcommand{\etal}[1]{ {\emph{et al.}\~{}}}
+%\newcommand{\eg}[1]{ {\emph{e.g.,}\~{}}}
+
+
+\newtheorem{example}{Example}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+
+
+
+
+
+
+\begin{document}
+	
+	
+% --- Author Metadata here ---
+\newfont{\mycrnotice}{ptmr8t at 7pt}
+\newfont{\myconfname}{ptmri8t at 7pt}
+\let\crnotice\mycrnotice%
+\let\confname\myconfname%
+
+\permission{Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org.}
+%\conferenceinfo{ESAIR'13,}{October 28, 2013, San Francisco, CA, USA.}
+%\CopyrightYear{2013}
+%\crdata{978-1-4503-2413-7/13/10 \\
+%http://dx.doi.org/10.1145/2513204.2513212 }
+
+
+
+\clubpenalty=10000 
+\widowpenalty = 10000
+
+
+\title{Mining Query Logs through Entity Linking}
+%\subtitle{[Extended Abstract]
+%\titlenote{A full version of this paper is available as
+%\textit{Author's Guide to Preparing ACM SIG Proceedings Using
+%\LaTeX$2_\epsilon$\ and BibTeX} at
+%\texttt{www.acm.org/eaddress.htm}}}
+%
+% You need the command \numberofauthors to handle the 'placement
+% and alignment' of the authors beneath the title.
+%
+% For aesthetic reasons, we recommend 'three authors at a time'
+% i.e. three 'name/affiliation blocks' be placed beneath the title.
+%
+% NOTE: You are NOT restricted in how many 'rows' of
+% "name/affiliations" may appear. We just ask that you restrict
+% the number of 'columns' to three.
+%
+% Because of the available 'opening page real-estate'
+% we ask you to refrain from putting more than six authors
+% (two rows with three columns) beneath the article title.
+% More than six makes the first-page appear very cluttered indeed.
+%
+% Use the \alignauthor commands to handle the names
+% and affiliations for an 'aesthetic maximum' of six authors.
+% Add names, affiliations, addresses for
+% the seventh etc. author(s) as the argument for the
+% \additionalauthors command.
+% These 'additional authors' will be output/set for you
+% without further effort on your part as the last section in
+% the body of your article BEFORE References or any Appendices.
+
+\numberofauthors{3} %  in this sample file, there are a *total*
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+%
+\author{
+% You can go ahead and credit any number of authors here,
+% e.g. one 'row of three' or two rows (consisting of one row of three
+% and a second row of one, two or three).
+% 
+% The command \alignauthor (no curly braces needed) should
+% precede each author name, affiliation/snail-mail address and
+% e-mail address. Additionally, tag each line of
+% affiliation/address with \affaddr, and tag the
+% e-mail address with \email.
+% 
+% 1st. author
+\alignauthor Manisha Verma\\
+\affaddr{UCL Department Of Computer Science}\\
+\email{\footnotesize manisha.verma.13@ucl.ac.uk}\\
+%
+\alignauthor Diego Ceccarelli\\
+\affaddr{IMT Lucca}\\ 
+\affaddr{ISTI CNR, Pisa}\\ 
+\email{\footnotesize d.ceccarelli@isti.cnr.it}\\
+% % 2nd. author
+ \alignauthor Claudio Lucchese\\
+ \affaddr{ISTI CNR, Pisa}\\ 
+\email{\footnotesize c.lucchese@isti.cnr.it}\\
+}
+
+
+
+\maketitle
+\begin{abstract}
+With the creation and rapid development of knowledge bases, it has become easier
+ to understand the underlying semantics of unstructured text (short or long) on the web.  
+ In this work we especially look at the impact of entity linking on search logs. 
+ Search queries are primary means of finding information. Only a handful of 
+ queries account for majority of search volume. While a large number of queries 
+ occur infrequently. The individual frequency of such queries renders it difficult 
+ to draw any conclusions about the nature of the query. In this work we focus 
+ on quantifying the extent of overlap between rare (long tail) and popular 
+ (head) queries by means of entity linking. We specifically analyze the frequency 
+ distribution of entities in head and tail queries. We also analyze the ratio of
+popular entities to rare entities in tail queries. Our analysis shows that by
+ means of entity linking, we can indeed bridge the gap between the head and tail. 
+
+%Search is the core service of the Web. Everyday Google receives
+%3.5 billion of queries. Being able to understand and summarize
+%the needs that users express in their queries is a fundamental and interesting task. 
+%In this paper we propose to use \emph{Entity Linking},
+%a technique that allows to automatically link unstructured data 
+%with entities in a Knowledge Base, for performing
+%Web Usage Mining. In particular, we use Entity Linking for 
+%exploring hidden connections between \emph{popular queries}, performed by huge number of users,  
+%and \emph{rare queries}, usually performed by only one user. 
+
+
+
+\end{abstract}
+\category{H.3.3}{Information Storage and Retrieval}{Information Search and Retrieval}[Information Filtering, Search process]
+%\vspace{-0.3cm}
+%\terms{Algorithms, Design, Experimentation.}
+%\vspace{-0.5cm}
+\keywords{Entity linking; Annotations; Web Usage Mining.}
+
+
+\section{Introduction}
+
+\input{introduction}
+
+%\manisha{observation:}
+
+%\section{Related works}
+
+%\input{related-works}
+
+\section{Enriching AOL query log data}
+
+\input{aol}
+
+\section{Analysis}
+%\input{analysis.diego}
+
+\input{analysis}
+
+\section{Future Roadmap}
+
+\input{future-works}
+%\paragraph{\bf {Acknowledgements}}
+%\section*{Acknowledgements}
+%\vspace{-0.4cm}
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+
+\balancecolumns
+% That's all folks!
+
+
+\end{document}
