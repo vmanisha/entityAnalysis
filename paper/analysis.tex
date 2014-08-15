@@ -11,11 +11,12 @@ entities in the head. In the tail, we found $550,953$ ($|$\stail{}$|$) distinct 
 $379,342$ ($|$\etail{}$|$) distinct entities. It  is also interesting to note that 
 $|$  \shead{} $\cap$ \stail{} $| = 11,027 |$  $|$ \ehead{} $\cap$ \etail{} $| = 8,888$, that 
 means that almost all the spots and entities in the head appear in the tail. 
-We then analyze spots and entities frequency distributions in head and tail: 
-in Figure~\ref{img:distributions}
+We then analyze spots and entities frequency distributions in head and tail, 
+depicted in Figure~\ref{img:distributions}: it is interesting note that while queries 
+in head and tail follow totally different distributions, when we look at their 
+spots/entities the distributions are similar \diego{add more comments on the graph}
 
-\begin{figure}[t]
-
+\begin{figure}
   \centering
     \includegraphics[width = 0.5\textwidth]{images/head-tail-ent-spot-dist.png}
 	\caption{Frequency distributions for spots and entities in \head{} (spot-head, ent-head) and \tail{} (spot-tail, ent-tail)}
@@ -25,133 +26,131 @@ in Figure~\ref{img:distributions}
 
 
 
-\todo{introduce \shead{} \stail{} \ehead{} \etail{} and  
-\begin{itemize}
-	\item comment table with commonness and link probability + top entities/spots
-	\item put total numbers
-	\item put global distribution
-\end{itemize} 
-}
+% \todo{introduce \shead{} \stail{} \ehead{} \etail{} and
+% \begin{itemize}
+% 	\item comment table with commonness and link probability + top entities/spots
+% 	\item put total numbers
+% 	\item put global distribution
+% \end{itemize}
+% }
 
-\todo{introduce the comparison between tail and head }
+%\todo{introduce the comparison between tail and head }
 
-\todo{describe Figure~\ref{img:headTailEntPercent}}
+%\todo{describe Figure~\ref{img:headTailEntPercent}}
 
-\todo{explain how head tail ratio is computed, present and comment the graph }
+%\todo{explain how head tail ratio is computed, present and comment the graph }
 
-\todo{conclusions and future works (e.g, use a modern query log, improve entity linking on queries, considering sessions)}
-
-
-
-Entities in Head ($E_{head}$): 8949
-Entities in Tail ($E_{tail}$): 379342
-Total Count of entities in Head : 6562784
-Total Count of entities in Tail : 9764565
+%\todo{conclusions and future works (e.g, use a modern query log, improve entity linking on queries, considering sessions)}
 
 
 
 
 
-Tail queries have been often mapped to the head \cite{} by using bag-of-word representations.
-Lately they have also been linked with the head queries through entities. However, in this work
-we attempt to study the extent to which the entities in the tail queries can be linked to entities 
-in the head queries. It is important to know how much will entity linking at tail benefit query mining. 
-We shall, from now on refer to entities in head queries as `head entity' 
-and entities occuring in the tail as `tail entity'. 
+% diego put this in the intro if there's space
+% Tail queries have been often mapped to the head \cite{} by using bag-of-word representations.
+% Lately they have also been linked with the head queries through entities. However, in this work
+% we attempt to study the extent to which the entities in the tail queries can be linked to entities
+% in the head queries. It is important to know how much will entity linking at tail benefit query mining.
+% We shall, from now on refer to entities in head queries as `head entity'
+% and entities occuring in the tail as `tail entity'.
 
 
-We begin by analyzing the volume of entities found in the tail. Of X unique tail queries,
-63.2\% contain atleast one entity. 
+% We begin by analyzing the volume of entities found in the tail. Of X unique tail queries,
+% 63.2\% contain atleast one entity.
 %Of queries containing more than one entity, 86.2\% queries contain atleast one head entity. 
 %Once, the queries in the tail are tagged with entities, 
-Next we look at what fraction of queries containing either only head entities, only tail entities 
+Next we look at what fraction of queries containing either only head entities, \emph{tail entities}, i.e., entities 
+that appear \emph{only} in the tail ($\in$ \etail{} $\setminus$ \ehead{})
 or both head and tail entities. Figure \ref{img:headTailEntPercent} shows the percentage of 
 queries with only head or tail entities or both. One can clearly see that a large percentage of tail 
 queries contain both head and tail entities. Moreover, this percentage gradually rises with the 
-number of entities in the query. HOW DOES IT HELP?
+number of entities in the query. This could mean that in longer queries people is looking 
+for connections among popular entities and rare entities. 
 
-\begin{figure}[t]
+\begin{figure}
 \label{img:headTailEntPercent}
-\caption{\%Queries with head, tail or both entities}
   \centering
-    \includegraphics[width = 0.45\textwidth]{images/entity-head-tail-count.png}
+    \includegraphics[width = 0.5\textwidth]{images/entity-head-tail-count.png}
+	
+	\caption{Percentage of queries referring head, tail or both entities}
+	
 \end{figure}
  
-Provided that such a large percentage of tail queries contain both head and tail entities, it 
-will be usefull to see the ratio of head entities to tail entities in these queries. Especially, 
-for queries with more than 2 entities, it would be interesting to see whether head queries occur more
-than tail queries or vice versa. Table \ref{table:entDist} shows the number of entities in the query, 
-number of such queries and the average head to tail entity ratio of these queries.
-Although, there are queries with more than 6 entities, they are too few to draw any significant 
-conclusions. PLEASE ADD > 6 RESULTS AS WELL. 
-%1.no of queries with head and tail ent
-%2.Head and tail entity histogram for queries with more than 1 ent 
-Head to Tail entity ratio is calculated by dividing number of head entities with number of 
-tail entities in the query, i.e. $E_{head}/E_{tail}$. It is interesting to note that queries with
-more entities have almost equal number of head and tail entities. Few query examples are provided in
-Table \ref{table:queriesWithEnt}. The entities are in bold. What is interesting is the nature of tail
-entities that co-occur with the head. 
+% Provided that such a large percentage of tail queries contain both head and tail entities, it
+% will be useful to see the ratio of head entities to tail entities in these queries. Especially,
+% for queries with more than 2 entities, it would be interesting to see whether head queries occur more
+% than tail queries or vice versa. Table \ref{table:entDist} shows the number of entities in the query,
+% number of such queries and the average head to tail entity ratio of these queries.
+% Although, there are queries with more than 6 entities, they are too few to draw any significant
+% conclusions. PLEASE ADD > 6 RESULTS AS WELL.
+% %1.no of queries with head and tail ent
+% %2.Head and tail entity histogram for queries with more than 1 ent
+% Head to Tail entity ratio is calculated by dividing number of head entities with number of
+% tail entities in the query, i.e. $E_{head}/E_{tail}$. It is interesting to note that queries with
+% more entities have almost equal number of head and tail entities. Few query examples are provided in
+% Table \ref{table:queriesWithEnt}. The entities are in bold. What is interesting is the nature of tail
+% entities that co-occur with the head.
+%
+% \begin{table}
+% \caption{\#Entities vs \#Queries}
+% \label{table:entDist}
+% \centering
+% \begin{tabular}{|l|l|l|}
+% \hline
+% \#Entities & \#Queries & Head Tail Ratio \\ \hline
+% 1 & 2622873 & NA \\ \hline
+% 2 & 1731256 & 0.48 \\ \hline
+% 3 & 457946  & 0.91 \\ \hline
+% 4 & 74125 & 1.09  \\ \hline
+% 5 & 10757 & 1.07 \\ \hline
+% 6 & 2416  & 0.97 \\ \hline
+% \end{tabular}
+% \end{table}
+%
+% %The table clearly shows that for every tail entity there is a head entity in the query.
+%
+% Figure \ref{img:headTailEntBreakup} shows the percentage of queries for each ratio
 
-\begin{table}
-\caption{\#Entities vs \#Queries}
-\label{table:entDist}
-\centering
-\begin{tabular}{|l|l|l|}
-\hline
-\#Entities & \#Queries & Head Tail Ratio \\ \hline
-1 & 2622873 & NA \\ \hline
-2 & 1731256 & 0.48 \\ \hline
-3 & 457946  & 0.91 \\ \hline
-4 & 74125 & 1.09  \\ \hline
-5 & 10757 & 1.07 \\ \hline
-6 & 2416  & 0.97 \\ \hline
-\end{tabular}
-\end{table}
+% \begin{table*}
+% \caption{Example queries with head and tail entities}
+% \label{table:queriesWithEnt}
+% \centering
+% \begin{tabular}{|l|l|l|l|}
+% \hline
+% Query &  Head Entities & Tail Entities \\ \hline
+% \textbf{first citizens bank} and trust \textbf{raleigh nc} & Raleigh,\_North\_Carolina & First\_Citizens\_Bank  \\ \hline
+% \textbf{internal revenue service} de \textbf{puerto roco} & Roco & Internal\_Revenue\_Service \\ \hline
+% \textbf{seafood sticks} \textbf{celery} \textbf{cheese} \textbf{egg} \textbf{casserole} \textbf{asian recipes} & Crab\_stick, Casserole, Celery & Race\_and\_ethnicity\_in\_the\_United\_States\_Census, Egg, Cheese \\ \hline
+%
+% \textbf{tennessee walking horses} in \textbf{missouri} sale & Missouri & Tennessee\_Walking\_Horse \\ \hline
+% \textbf{i love you} \textbf{remix} featuring \textbf{jim jones} and \textbf{black rob} & I\_Love\_You,\_Man, Remix & Jim\_Jones\_(rapper), Black\_Rob \\ \hline
+% \end{tabular}
+% \end{table*}
 
-%The table clearly shows that for every tail entity there is a head entity in the query. 
-
-Figure \ref{img:headTailEntBreakup} shows the percentage of queries for each ratio 
-
-\begin{table*}
-\caption{Example queries with head and tail entities}
-\label{table:queriesWithEnt}
-\centering
-\begin{tabular}{|l|l|l|l|}
-\hline
-Query &  Head Entities & Tail Entities \\ \hline
-\textbf{first citizens bank} and trust \textbf{raleigh nc} & Raleigh,\_North\_Carolina & First\_Citizens\_Bank  \\ \hline
-\textbf{internal revenue service} de \textbf{puerto roco} & Roco & Internal\_Revenue\_Service \\ \hline
-\textbf{seafood sticks} \textbf{celery} \textbf{cheese} \textbf{egg} \textbf{casserole} \textbf{asian recipes} & Crab\_stick, Casserole, Celery & Race\_and\_ethnicity\_in\_the\_United\_States\_Census, Egg, Cheese \\ \hline
-
-\textbf{tennessee walking horses} in \textbf{missouri} sale & Missouri & Tennessee\_Walking\_Horse \\ \hline
-\textbf{i love you} \textbf{remix} featuring \textbf{jim jones} and \textbf{black rob} & I\_Love\_You,\_Man, Remix & Jim\_Jones\_(rapper), Black\_Rob \\ \hline
-\end{tabular}
-\end{table*}
-
-\begin{figure}[t]
-\label{img:headTailEntBreakup}
-\caption{\%Queries vs Head to Tail Entity Ratio}
-  \centering
-    \includegraphics[width = 0.45\textwidth]{images/entity-head-query-ratio-dist.png}
-\end{figure}
+% \begin{figure}[t]
+% \label{img:headTailEntBreakup}
+% \caption{\%Queries vs Head to Tail Entity Ratio}
+%   \centering
+%     \includegraphics[width = 0.45\textwidth]{images/entity-head-query-ratio-dist.png}
+% \end{figure}
 
 %Head entity popularity
-Given that there would several head entities, not all of them will be equally popular. 
-Here, popularity of the entity refers to the scope of that entity, how many entities does 
-it co-occur with, or how common is that entity. 
-Figure \ref{img:headEntDist} shows the frequency distribution of head entities in the 
-head queries. That is, how frequently does a head entity occur in popular queries. 
-To aggregate statistics for the tail, we divide head entities into 7 buckets, each bucket
-spanning 20\% of entities. This results in X popular entities being in 0-20\% range, Y 
-entities in 20-40\% range, so on and so forth. 
+% Given that there would several head entities, not all of them will be equally popular.
+% Here, popularity of the entity refers to the scope of that entity, how many entities does
+% it co-occur with, or how common is that entity.
+% Figure \ref{img:headEntDist} shows the frequency distribution of head entities in the
+% head queries. That is, how frequently does a head entity occur in popular queries.
+% To aggregate statistics for the tail, we divide head entities into 7 buckets, each bucket
+% spanning 20\% of entities. This results in X popular entities being in 0-20\% range, Y
+% entities in 20-40\% range, so on and so forth.
 
 
-\begin{figure}[t]
-\label{img:headEntDist}
-\caption{Cumulative Distribution of Entity Frequency in Head Queries}
-  \centering
-    \includegraphics[width = 0.45\textwidth]{images/entity-head-dist.png}
-\end{figure}
+% \begin{figure}[t]
+% \label{img:headEntDist}
+% \caption{Cumulative Distribution of Entity Frequency in Head Queries}
+%   \centering
+%     \includegraphics[width = 0.45\textwidth]{images/entity-head-dist.png}
+% \end{figure}
 
 
 
@@ -160,30 +159,30 @@ Figure \ref{img:headEntDistInTail}. The figure clearly indicates that
 WRITE ABOUT THE PLOT HERE
 
  
-\begin{table}
-\caption{Queries per Popularity of Head Entity}
-\label{table:headEntQueryDist}
-\centering
-\begin{tabular}{|l|l|l|}
-\hline
-Popularity & \#Entities & Queries \\ \hline
-0-20\% & 3 & 14851 \\ \hline
-20-40\% & 18  & 57611.0 \\ \hline
-40-60\% & 95 & 149733.0 \\ \hline
-60-80\% & 287 & 299561.0 \\ \hline
-80-95\% & 560 & 569271.0 \\ \hline
-95-97\% & 236 & 298498.0 \\ \hline
-97-100\% & 349 & 854345. 0  \\ \hline
-\end{tabular}
-\end{table}
+% \begin{table}
+% \caption{Queries per Popularity of Head Entity}
+% \label{table:headEntQueryDist}
+% \centering
+% \begin{tabular}{|l|l|l|}
+% \hline
+% Popularity & \#Entities & Queries \\ \hline
+% 0-20\% & 3 & 14851 \\ \hline
+% 20-40\% & 18  & 57611.0 \\ \hline
+% 40-60\% & 95 & 149733.0 \\ \hline
+% 60-80\% & 287 & 299561.0 \\ \hline
+% 80-95\% & 560 & 569271.0 \\ \hline
+% 95-97\% & 236 & 298498.0 \\ \hline
+% 97-100\% & 349 & 854345. 0  \\ \hline
+% \end{tabular}
+% \end{table}
 
 
-\begin{figure}[t]
-\label{img:headRankInTail}
-\caption{\%Queries vs Rank of Head Entities}
-  \centering
-    \includegraphics[width = 0.45\textwidth]{images/entity-head-query-ratio-dist.png}
-\end{figure}
+% \begin{figure}[t]
+% \label{img:headRankInTail}
+% \caption{\%Queries vs Rank of Head Entities}
+%   \centering
+%     \includegraphics[width = 0.45\textwidth]{images/entity-head-query-ratio-dist.png}
+% \end{figure}
 
 %In entity analysis of Aol query logs we calculate the following:
 %\begin{itemize}
@@ -193,29 +192,29 @@ Popularity & \#Entities & Queries \\ \hline
 %\end{itemize}
 
 
-\begin{tabular}{ccccc}
-\toprule
-link probability & commonness & $k$ & $J^{spot}_k$ & $J^{top entity}_k$ \\
-\midrule
-\multirow{6}{*}{$0.3$} &  \multirow{3}{*}{$0.3$} & $50$ &  $0.01$  &   $0.03$  \\
-					 &						   & $500$ 	&  $0.11$  &   $0.14$  \\
-					 &						   & $5,000$ & $0.21$   &  $0.25$    \\
-\cline{2-5}
-					 &	\multirow{3}{*}{$0.7$}  & $50$      & $0.01$   &   $0.03$ \\
-					 &						   & $500$   	& $0.11$   &   $0.14$  \\
-					 &						   & $5,000$ 	& $0.21$   &   $0.27$    \\
-					
-\midrule		
-\multirow{6}{*}{$0.7$} &  \multirow{3}{*}{$0.3$}   & $50$  & $0.05$   &   $0.06$  \\
-					 &						   & $500$ 	   &   $0.11$   &    $0.13$  \\
-					 &						   & $5,000$   &   $0.22$   &  $0.26$  \\
-\cline{2-5}
-
-					 &	\multirow{3}{*}{$0.7$}  & $50$   &  $0.05$   &  $0.06$  \\
-					 &						   & $500$   &  $0.11$   &   $0.15$   \\
-					 &						   & $5,000$ &  $0.22$   &   $0.28$  \\
-\bottomrule
-\end{tabular}
+% \begin{tabular}{ccccc}
+% \toprule
+% link probability & commonness & $k$ & $J^{spot}_k$ & $J^{top entity}_k$ \\
+% \midrule
+% \multirow{6}{*}{$0.3$} &  \multirow{3}{*}{$0.3$} & $50$ &  $0.01$  &   $0.03$  \\
+% 					 &						   & $500$ 	&  $0.11$  &   $0.14$  \\
+% 					 &						   & $5,000$ & $0.21$   &  $0.25$    \\
+% \cline{2-5}
+% 					 &	\multirow{3}{*}{$0.7$}  & $50$      & $0.01$   &   $0.03$ \\
+% 					 &						   & $500$   	& $0.11$   &   $0.14$  \\
+% 					 &						   & $5,000$ 	& $0.21$   &   $0.27$    \\
+%
+% \midrule
+% \multirow{6}{*}{$0.7$} &  \multirow{3}{*}{$0.3$}   & $50$  & $0.05$   &   $0.06$  \\
+% 					 &						   & $500$ 	   &   $0.11$   &    $0.13$  \\
+% 					 &						   & $5,000$   &   $0.22$   &  $0.26$  \\
+% \cline{2-5}
+%
+% 					 &	\multirow{3}{*}{$0.7$}  & $50$   &  $0.05$   &  $0.06$  \\
+% 					 &						   & $500$   &  $0.11$   &   $0.15$   \\
+% 					 &						   & $5,000$ &  $0.22$   &   $0.28$  \\
+% \bottomrule
+% \end{tabular}
 
 \begin{figure*}
 	\footnotesize
