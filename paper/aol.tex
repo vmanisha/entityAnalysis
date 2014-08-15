@@ -1,11 +1,11 @@
 We perform our analysis on the AOL query log~\cite{pass2006picture}, since it is easy to obtain\footnote{the query log can be retrieved from \url{http://www.gregsadetsky.com/aol-data/}}
-AOL query log consists of approximately 20 millions of queries submitted by $650,000$ users from March to May in 2006. Queries are normalized (text lowercased, not ascii characters removed) and 
+AOL query log consists of approximately 20 millions of queries submitted by $650,000$ users from March to May in 2006. Queries are normalized (text lowercased, non ascii characters removed) and 
 there are in total $10,154,742$ distinct queries. We extracts from the logs two disjunct sets: 
 \begin{description}
 	\item{\tail{}} the set of the queries in the long tail, containing all the queries that appear in the log with a frequency \emph{lower than or equal} to $2$. The set contains 
-	$7,746,607$ distinct queries, the $76\%$ if we look at the distinct queries, but the $26\%$ if we consider repetitions. \diego{I don't know how to write this, total frequency?}
+	$7,746,607$ distinct queries, the $76\%$ if we look at the distinct queries, but the $26\%$ if we consider the frequencies of the queries.
 	\item{\head{}} the set of the queries in the head, containing all the queries that appear in the log with a frequency \emph{greater than} to $100$. The set contains 
-	$19,953$ distinct queries, the $0.002\%$ if we look at the distinct queries, but still the $26\%$ if we consider repetitions.
+	$19,953$ distinct queries, the $0.002\%$ if we look at the distinct queries, but still the $26\%$ if we consider the frequencies of the queries.
 \end{description}
 The two sets are different in size if we look at the distinct queries but they cover the same fraction of total queries performed by the users. We performed our 
 analysis on these two sets.
@@ -22,17 +22,21 @@ In this preliminary work we decided to work with the queries and without conside
 process: the spot detection. We do not perform the disambiguation for two reasons: i) we are considering only the queries and not all the sessions that contain 
 them, so the context is really small and probably not useful for disambiguating correctly the query, and ii) Disambiguation is usually computationally more expensive
 since it involves the pairwise comparison of the candidate entities of the spots
-detected in order to compute the \emph{relatedness} distance between them.
+detected in order to compute the \emph{relatedness}\cite{milne2008learning} distance between them.
 
 We performed the spot detection over all the queries in \tail{} and \head{} using the Dexter~\cite{ceccarelli2013dexter} entity linker. 
 The linker exploits a dictionary containing more than 10 million spots extracted from titles and anchor texts of a recent English dump 
-of Wikipedia. Given a query, all the possible n-grams are generated and matched against the dictionary. We annotated $13,977$ ($70\%$)
+of Wikipedia. Given a query, all the possible $n$-grams (with $n$ between one and six, and considering only n-grams longer than 2 characters ) are generated and matched against the dictionary. We annotated $13,977$ ($70\%$)
 queries in \head{} with at least one spot, and respectively $4,901,987$ ($63\%$) queries in \tail{}. For each spot we also collected: 
-i) the \textbf{position in the query}, the start and end position in the query ii) the \textbf{link probability (lp)} the probability
+i) the \textbf{position in the query}, the start and end position in the query ii) the \textbf{link probability} the probability
 for the spot to link to an entity, computed as the number of occurrences of the spot as anchor text in Wikipedia divided by the number of occurrences
 as simple text and iii) \textbf{the candidate entities}, a list of possible candidate entities for the spot; for each candidate we also retrieve
 its \textbf{commonness}, the probability $p(e|s)$ that the spot $s$ refers to the entity $e$ computed considering how many times on Wikipedia
 the anchor text $s$ is referring to the page for the entity $e$.
+
+
+
+
 
 
 

@@ -9,8 +9,6 @@ studies the user needs in order to improve the user satisfaction and engagement 
 %Being able to analyze this huge quantity of hetrogeneous data is a fundamental 
 %task for a search engine, and in general for all the website owners that want to analyze queries 
 %performed for reaching their website and to profile users. 
-
-\diego{describe what usually a query log contains?}
 A well known fact is the sparsity of the logs. In 2007, Yates \emph{ et al.}~\cite{baeza2007impact} 
 analyzed one year of logs and found that the $64\%$ of the queries were performed by only one user.
 Usually the frequency distribution of the queries follow the \emph{Zipf law}: there is a small 
@@ -24,16 +22,17 @@ from a knowledge base; recently many approached for applying
 EL to queries have been proposed and evaluated during the Entity Recognition and Disambiguation Challenge\footnote{
 \url{http://web-ngram.research.microsoft.com/ERD2014/}} organized by Microsoft. 
 
-Hollink \emph{et al.}~\cite{hollink2013web} exploited EL for web usage mining: in their inspiring work they consider a sample of 
+Hollink \emph{et al.}~\cite{hollink2013web} exploited EL for web usage mining: 
+in their inspiring work they consider a sample of 
 queries from Yahoo! Search in the United States, and they filter only queries about movies. The focus
 of their work is on studying the \emph{types} of the queries (e.g., trailer, movies, dvd), and on finding
 type patterns among sessions and queries. In our research we are interested in studying the 
 relationship between the head and the tail of a query log
 through the entities potentially captured in the queries. Our primary research questions are:
 \begin{itemize}
-	\item Are queries in the tail just a different way to express information needs of popular queries? 
-	\item Can we find tail queries that express needs that are not in the head (let us call them \emph{tail needs})?
-	\item Can we find a relationship between tail needs and \emph{head needs}?  
+	\item Are queries in the tail just a different way to look for entities yet searched in the head? 
+	\item Can we find tail queries about entities that are not searched in the head (we will call them \emph{tail entities})?
+	\item Can we find a relationship between tail entities and \emph{head entities}?  
 \end{itemize} 
 
 In the following we will describe the technique that we adopted for annotating a large query log with entities 
