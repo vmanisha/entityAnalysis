@@ -1,27 +1,50 @@
 \subsection{Entity Stats}
-Entities in Head (E_{head}): 8949
-Entities in Tail (E_{tail}): 379342
+
+Entities in Head ($E_{head}$): 8949
+Entities in Tail ($E_{tail}$): 379342
 Total Count of entities in Head : 6562784
 Total Count of entities in Tail : 9764565
- 
 
 Tail queries have been often mapped to the head \cite{} by using bag-of-word representations.
 Lately they have also been linked with the head queries through entities. However, in this work
-we attempt to quantify the extent to which the entities in the tail can be linked to entities 
+we attempt to study the extent to which the entities in the tail queries can be linked to entities 
 in the head queries. It is important to know how much will entity linking at tail benefit query mining. 
 We shall, from now on refer to entities in head queries as `head entity' 
 and entities occuring in the tail as `tail entity'. 
 
+
+We begin by analyzing the volume of entities found in the tail. Of X unique tail queries,
+63.2\% contain atleast one entity. 
+%Of queries containing more than one entity, 86.2\% queries contain atleast one head entity. 
+%Once, the queries in the tail are tagged with entities, 
+Next we look at what fraction of queries containing either only head entities, only tail entities 
+or both head and tail entities. Figure \ref{img:headTailEntPercent} shows the percentage of 
+queries with only head or tail entities or both. One can clearly see that a large percentage of tail 
+queries contain both head and tail entities. Moreover, this percentage gradually rises with the 
+number of entities in the query. HOW DOES IT HELP?
+
+\begin{figure}[t]
+\label{img:headTailEntPercent}
+\caption{\%Queries with head, tail or both entities}
+  \centering
+    \includegraphics[width = 0.45\textwidth]{images/entity-head-tail-count.png}
+\end{figure}
+ 
+Provided that such a large percentage of tail queries contain both head and tail entities, it 
+will be usefull to see the ratio of head entities to tail entities in these queries. Especially, 
+for queries with more than 2 entities, it would be interesting to see whether head queries occur more
+than tail queries or vice versa. Table \ref{table:entDist} shows the number of entities in the query, 
+number of such queries and the average head to tail entity ratio of these queries.
+Although, there are queries with more than 6 entities, they are too few to draw any significant 
+conclusions. PLEASE ADD > 6 RESULTS AS WELL. 
 %1.no of queries with head and tail ent
 %2.Head and tail entity histogram for queries with more than 1 ent 
-We begin by analyzing the volume of entities found in the tail. Of X unique tail queries,
-63.2\% contain atleast one entity. Of queries containing more than one entity,  
-86.2\% queries contain atleast one head entity. Table \ref{table:entDist} shows the number of 
-queries, corresponding number of entities and the head to tail entity ratio in query. 
 Head to Tail entity ratio is calculated by dividing number of head entities with number of 
-tail entities in the query. The table clearly shows that for every tail entity there is a 
-head entity in the query. Although, there are queries with more than 6 entities, 
-they are too few to draw any significant conclusions. 
+tail entities in the query, i.e. $E_{head}/E_{tail}$. It is interesting to note that queries with
+more entities have almost equal number of head and tail entities. Few query examples are provided in
+Table \ref{table:queriesWithEnt}. The entities are in bold. What is interesting is the nature of tail
+entities that co-occur with the head. 
+
 \begin{table}
 \caption{\#Entities vs \#Queries}
 \label{table:entDist}
@@ -38,8 +61,24 @@ they are too few to draw any significant conclusions.
 \end{tabular}
 \end{table}
 
-Figure \ref{img:headTailEntBreakup} shows the number of queries for each ratio. 
-WRITE MORE ABOUT THE PLOT
+%The table clearly shows that for every tail entity there is a head entity in the query. 
+
+Figure \ref{img:headTailEntBreakup} shows the percentage of queries for each ratio 
+
+\begin{table}
+\caption{Example queries with head and tail entities}
+\label{table:queriesWithEnt}
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Query & Entities & Head Entities & Tail Entities \\ \hline
+\textbf{first citizens bank} and trust \textbf{raleigh nc} & Raleigh,\_North\_Carolina & First\_Citizens\_Bank  \\ \hline
+\textbf{internal revenue service} de \textbf{puerto roco} & Roco & Internal\_Revenue\_Service \\ \hline
+\textbf{seafood sticks} \textbf{celery} \textbf{cheese} \textbf{egg} \textbf{casserole} \textbf{asian recipes} & Crab\_stick, Casserole, Celery & Race\_and\_ethnicity\_in\_the\_United\_States\_Census, Egg, Cheese \\ \hline
+\texybf{tennessee walking horses} in \textbf{missouri} sale & Missouri & Tennessee\_Walking\_Horse \\ \hline
+\textbf{i love you} \textbf{remix} featuring \textbf{jim jones} and \textbf{black rob} & I\_Love\_You,\_Man, Remix & Jim\_Jones\_(rapper), Black\_Rob \\ \hline
+\end{tabular}
+\end{table}
 
 \begin{figure}[t]
 \label{img:headTailEntBreakup}
