@@ -165,8 +165,8 @@
 % 
 % 1st. author
 \alignauthor Manisha Verma\\
-\affaddr{UCL Department Of Computer Science}\\
-\email{ manisha.verma.13@ucl.ac.uk}\\
+\affaddr{University College London}\\
+\email{ m.verma@cs.ucl.ac.uk}\\
 %
 \alignauthor Diego Ceccarelli\\
 \affaddr{IMT Lucca}\\ 
@@ -185,15 +185,18 @@
 With the creation and rapid development of knowledge bases, it has become easier
  to understand the underlying semantics of unstructured text (short or long) on the web.  
  In this work we especially look at the impact of entity linking on search logs. 
- Search queries are primary means of finding information. While a handful of 
- queries account for majority of search volume, a large number of queries 
- occur infrequently. The individual frequency and sparsity of related statistics makes 
- it difficult to draw any conclusions about such rare queries.
+ Search queries follow a Zipfian distribution wherein other than few popular queries 
+ (\emph{head queries}), a significant percentage of queries (\emph{tail queries}) occur rarely. 
+ Given a search log, there is sufficient data to analyze head queries but insufficient 
+ data (low frequency, limited clicks) to draw any conclusions about tail queries. 
+%Search queries are primary means of finding information. While a handful of 
+ %queries account for majority of search volume, a large number of queries 
+ %occur infrequently. The individual frequency and sparsity of related statistics makes 
+ %it difficult to draw any conclusions about such rare queries.
  %renders it difficult to draw any conclusions about the nature of the query. 
- In this work we focus on quantifying the extent of overlap between rare 
- (long tail) and popular (head) queries by means of entity linking. 
- We specifically analyze the frequency distribution of entities in head and 
- tail queries. 
+ In this work we focus on quantifying the extent of overlap between long tail
+ and head queries by means of entity linking. We specifically analyze the 
+ frequency distribution of entities in head and tail queries. 
  %We also analyze the ratio of popular entities to rare entities in tail queries. 
  Our analysis shows that by means of entity linking, we can indeed bridge the 
  gap between the head and tail. 
@@ -211,7 +214,7 @@ With the creation and rapid development of knowledge bases, it has become easier
 
 
 \end{abstract}
-\category{H.3.3}{Information Storage and Retrieval}{Information Search and Retrieval}[Information Filtering, Search process]
+\category{H.3.3}{Information Storage and Retrieval}{Information Search and Retrieval}[Information Filtering]
 %\vspace{-0.3cm}
 %\terms{Algorithms, Design, Experimentation.}
 %\vspace{-0.5cm}
@@ -252,6 +255,7 @@ and the Regional (Tuscany) project MAPaC (POR CReO FESR 2007/2013).
 %\section*{Acknowledgements}
 %\vspace{-0.4cm}
 \bibliographystyle{abbrv}
+\scriptsize
 \bibliography{biblio}
 
 \balancecolumns

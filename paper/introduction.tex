@@ -4,19 +4,20 @@ is instrumental in enriching user's search experience. \emph{Web Usage Mining}~\
 studies the user needs in order to improve the user satisfaction and engagement on the website. 
 
 Search queries tend to follow a heavy-tailed Zipf Distribution \cite{baeza2007impact}, wherein a large 
-fraction of queries occur too infrequently. This large set is called the \emph{long tail}. While some 
-popular queries \emph{head queries} are easy to analyze due to their tremendous search volume. 
-But on the other hand, the small frequencies, corresponding low clicks or reformulations 
+fraction of queries occur too infrequently. This large set is called the \emph{long tail}. While 
+popular queries \emph{head queries} are easy to analyze due to their tremendous search volume, on the 
+other hand, the small frequencies, corresponding low clicks or reformulations 
 of tail queries makes it difficult to conclusively analyze them. Analysis of tail queries is not new, 
 however, existing work \cite{Doug2007Sigir,Goel2010Wsdm} looks at user behavior associated with
-rare queries whereas we believe that the content of such queries can also provide important cues in both
-understanding as well as associating them with popular queries. 
+rare queries whereas we postulate that the content of such queries can also provide important cues to both
+understand and associate them with popular queries. 
 
-But understanding such queries only by bag-of-words suffers from several shortcomings. However, with the 
-creation and constant development of knowledge bases, it is now possible to understand underlying semantics
+Understanding rare queries only with bag-of-words approaches is hindered by multiple interpretations or
+incomplete information in query text. 
+However, with the creation and constant development of knowledge bases, it is now possible to understand underlying semantics
 of a query. Particularly, in this work, we propose to exploit \textbf{Entity Linking} (EL) for analyzing queries 
 both at the head and the tail. Entity Linking helps enrich raw text with entities from a knowledge base; recently 
-many approached for applying EL to queries have been proposed and evaluated during the Entity Recognition and Disambiguation Challenge\footnote{\url{http://web-ngram.research.microsoft.com/ERD2014/}} organized by Microsoft. 
+many approached for applying EL to queries have been proposed and evaluated during the Entity Recognition and Disambiguation Challenge\footnote{\url{http://web-ngram.research.microsoft.com/ERD2014/}}. 
 %Everyday people perform millions of queries against search engines. Often different people express
 %the same \emph{information need} using different terms due to their culture, previous experiences,
 %age \dots. 
@@ -40,12 +41,12 @@ many approached for applying EL to queries have been proposed and evaluated duri
 
 Hollink \emph{et al.}~\cite{hollink2013web} exploited EL for web usage mining: 
 in their work they consider a sample of queries related to entertainment from 
-Yahoo! Search Logs. Their focus is to study the \emph{types} of the queries (e.g., trailer, movies, dvd), and on finding
+Yahoo! Logs. Their focus is to study the \emph{types} of the queries (e.g., trailer, movies, dvd), and on finding
 type patterns among sessions and queries. In this work, we are interested in studying the 
 relationship between the head and the tail queries through the entities they contain. 
 Our primary research questions are:
 \begin{itemize}
-	\item Are queries in the tail just a different way to look for entities yet searched in the head? 
+	\item Are tail queries a different means to inquire about entities mentioned in the head queries? 
 	\item Can we find tail queries about entities that are not searched in the head (we will call them \emph{tail entities})?
 	\item Can we find a relationship between tail entities and \emph{head entities}?  
 \end{itemize} 

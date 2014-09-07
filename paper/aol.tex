@@ -1,8 +1,8 @@
-We perform our analysis on the AOL query log~\cite{pass2006picture}, since it is publicly available\footnote{\url{http://www.gregsadetsky.com/aol-data/}}. AOL query log consists of approximately 20 millions of queries submitted by $650,000$ users from March to May in 2006. Queries are normalized (text lowercased, non ascii characters removed) and there are in total $10,154,742$ distinct queries. 
+We perform our analysis on the AOL query log, since it is publicly available\footnote{\url{http://www.gregsadetsky.com/aol-data/}}. AOL log consists of approximately 20 million queries submitted by $650,000$ users from March to May 2006. Queries are normalized (text lowercased, non ascii characters removed) and there are in total $10,154,742$ distinct queries. 
 We extract 2 distinct sets from these queries: 
 \begin{description}
 	\item{\tail{}} The set of queries in the long tail, i.e. queries that appear in the log with a frequency \emph{lower than or equal} to $2$. The set contains $7,746,607$ distinct queries, i.e. $76\%$ of distinct queries, but it is $26\%$ of the total volume of the queries.
-	\item{\head{}} The set of queries in the head. It contains queries that appear with a frequency \emph{greater than} to $100$. The set contains $19,953$ distinct queries, i.e. $0.002\%$ if we look at the distinct queries, but still these queries represent $26\%$ of total query volume.% if we consider the frequencies of the queries.
+	\item{\head{}} The set of queries in the head. It contains queries that appear with a frequency \emph{greater than} $99$. The set contains $19,953$ distinct queries, i.e. $0.002\%$ if we look at the distinct queries, but still these queries represent $26\%$ of total query volume.% if we consider the frequencies of the queries.
 \end{description}
 Although, the two sets differ in number of queries ($\sim19$K versus $\sim7$M), they cover the same fraction of total queries issued to the search engine. All our analysis are performed on these two sets.
 
@@ -12,15 +12,15 @@ The first step of the analysis is to find entities in the search queries.
 The Entity Linking task consists of identifying small fragments of text (called \emph{spots}), which may refer to an entity (represented by a URI) within a knowledge base (KB). For example, `ny', `nyc' will link to New York City in a KB. 
 Usually EL task consists of two steps: i) \textbf{Spot Detection}: given the input document (in our case a query), 
 the spots are detected and for each spot a list of candidate entities is returned; and ii) \textbf{Disambiguation}:
-for each ambiguous spot (e.g., \texttt{brazil} could refer to the state, or the football team), a single entity is 
+for each ambiguous spot (e.g., \texttt{brazil} could refer to the country or the football team), a single entity is 
 selected to be linked to the spot.
 
 %In this preliminary work we decided to work with the queries and without considering the user sessions. 
 We performed only the first step of the Entity Linking process: spot detection. 
-We do not perform disambiguation for two reasons: i) Since we consider individual queries and not sessions, the context is not sufficient and probably not useful for correctly disambiguating the query, and ii) Disambiguation is usually computationally more expensive
+We do not perform disambiguation for two reasons: i) Since we consider individual queries and not sessions, the context is not sufficient and probably not useful to correctly disambiguate the query, and ii) Disambiguation is usually computationally more expensive
 since it involves the pairwise comparison of the candidate entities of the detected spots to compute \emph{relatedness}\cite{milne2008learning} distance between them.
 
-We identify spots both in tail as well as the head queries %in \tail{} and \head{} 
+We identify spots in both the head and the tail queries %in \tail{} and \head{} 
 using Dexter~\cite{ceccarelli2013dexter}. The linker exploits a dictionary of 
 more than 10 million spots extracted 
 from titles and anchor texts of a recent English Wikipedia dump. Given a query, 
