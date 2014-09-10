@@ -1,8 +1,6 @@
 import sys
 #import ast
 import json
-<<<<<<< HEAD
-<<<<<<< HEAD
 from stats import loadEntDict
 MENTION = 'mention'
 QUERY = 'query'
@@ -122,7 +120,7 @@ def main(argv):
 			if ent1 in headEnt:
 				queryEntStats[qid]['h']+= 1.0
 				quant = headEnt[ent1]
-				queryEntStats[qid]['hdist'][quant] = queryEntStats[qid]['hdist'].setdefault(quant,0.0)+1.0
+				queryEntStats[qid]['hdist'][quant] = queryEntStats[qid]['hdist'].setdefault(quant,0.0)+ 1.0
 			else:
 				queryEntStats[qid]['t']+= 1.0
 		#if qid in queryEntStats:

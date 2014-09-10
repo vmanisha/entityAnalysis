@@ -7,18 +7,22 @@ We extract 2 distinct sets from these queries:
 Although, the two sets differ in number of queries ($\sim19$K versus $\sim7$M), they cover the same fraction of total queries issued to the search engine. All our analysis are performed on these two sets.
 
 \paragraph{Enriching the Queries}
-The first step of the analysis is to find entities in the search queries.  
+The first step of the analysis is to associate search queries with entities in a knowledge base.  
 %We are interested in studying the entities that may occur in queries in order to find connections between the queries in \head{} and in \tail{}.
-The Entity Linking task consists of identifying small fragments of text (called \emph{spots}), which may refer to an entity (represented by a URI) within a knowledge base (KB). For example, `ny', `nyc' will link to New York City in a KB. 
+The Entity Linking task consists of identifying small fragments of text (called
+\emph{spots}), which may refer to an entity (represented by a URI) within a
+knowledge base (KB). For example, `NY', `NYC' will link to New York City in a
+KB.
 Usually EL task consists of two steps: i) \textbf{Spot Detection}: given the input document (in our case a query), 
 the spots are detected and for each spot a list of candidate entities is returned; and ii) \textbf{Disambiguation}:
-for each ambiguous spot (e.g., \texttt{brazil} could refer to the country or the football team), a single entity is 
+for each ambiguous spot (e.g., \texttt{Brazil} could refer to the country or the
+football team), a single entity is
 selected to be linked to the spot.
 
 %In this preliminary work we decided to work with the queries and without considering the user sessions. 
 We performed only the first step of the Entity Linking process: spot detection. 
 We do not perform disambiguation for two reasons: i) Since we consider individual queries and not sessions, the context is not sufficient and probably not useful to correctly disambiguate the query, and ii) Disambiguation is usually computationally more expensive
-since it involves the pairwise comparison of the candidate entities of the detected spots to compute \emph{relatedness}\cite{milne2008learning} distance between them.
+since it involves the pairwise comparison of the candidate entities of the detected spots to compute \emph{relatedness}\cite{milne2008learning} distance between them. 
 
 We identify spots in both the head and the tail queries %in \tail{} and \head{} 
 using Dexter~\cite{ceccarelli2013dexter}. The linker exploits a dictionary of 
@@ -35,4 +39,5 @@ as anchor text in Wikipedia divided by the number of occurrences as plain text a
  \textbf{the candidate entities}, a list of possible candidate entities for the spot; 
  for each candidate we also retrieve its \textbf{commonness}, the probability $p(e|s)$ that
   the spot $s$ refers to the entity $e$.
+
 

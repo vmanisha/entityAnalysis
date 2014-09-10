@@ -1,20 +1,20 @@
-At present, querying a search engine is the most popular means to find information. This makes
+At present, a text query is the most prominent means to find information with a
+search engine. This makes
 search log mining or analysis unavoidable as understanding user dynamics, demographics or interests
 is instrumental in enriching user's search experience. \emph{Web Usage Mining}~\cite{silvestri2010mining}  
-studies the user needs in order to improve the user satisfaction and engagement on the website. 
+studies user needs in order to improve both user satisfaction and engagement on the website. 
 
 Search queries tend to follow a heavy-tailed Zipf Distribution \cite{baeza2007impact}, wherein a large 
-fraction of queries occur too infrequently. This large set is called the \emph{long tail}. While 
-popular queries \emph{head queries} are easy to analyze due to their tremendous search volume, on the 
-other hand, the small frequencies, corresponding low clicks or reformulations 
-of tail queries makes it difficult to conclusively analyze them. Analysis of tail queries is not new, 
-however, existing work \cite{Doug2007Sigir,Goel2010Wsdm} looks at user behavior associated with
-rare queries whereas we postulate that the content of such queries can also provide important cues to both
-understand and associate them with popular queries. 
+fraction of queries occur too infrequently. This large set is called the \emph{long tail}. 
+While popular queries (\emph{head queries}) are easy to analyze given their tremendous search volume, the small 
+frequencies, low clicks and reformulations of tail queries makes it difficult to conclusively analyze them. 
+Analysis of tail queries is not new, however, existing work \cite{Doug2007Sigir,Goel2010Wsdm} looks at 
+user behavior associated with rare queries whereas we postulate that the content of such queries can also 
+provide important cues to both understand and associate them with popular queries. 
 
 Understanding rare queries only with bag-of-words approaches is hindered by multiple interpretations or
 incomplete information in query text. 
-However, with the creation and constant development of knowledge bases, it is now possible to understand underlying semantics
+However, with the creation and constant development of knowledge bases, it is now possible to recognize underlying semantics
 of a query. Particularly, in this work, we propose to exploit \textbf{Entity Linking} (EL) for analyzing queries 
 both at the head and the tail. Entity Linking helps enrich raw text with entities from a knowledge base; recently 
 many approached for applying EL to queries have been proposed and evaluated during the Entity Recognition and Disambiguation Challenge\footnote{\url{http://web-ngram.research.microsoft.com/ERD2014/}}. 
@@ -42,7 +42,7 @@ many approached for applying EL to queries have been proposed and evaluated duri
 Hollink \emph{et al.}~\cite{hollink2013web} exploited EL for web usage mining: 
 in their work they consider a sample of queries related to entertainment from 
 Yahoo! Logs. Their focus is to study the \emph{types} of the queries (e.g., trailer, movies, dvd), and on finding
-type patterns among sessions and queries. In this work, we are interested in studying the 
+type patterns among sessions and queries. However, in this work, we are interested in studying the 
 relationship between the head and the tail queries through the entities they contain. 
 Our primary research questions are:
 \begin{itemize}

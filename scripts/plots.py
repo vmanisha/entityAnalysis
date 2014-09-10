@@ -68,7 +68,10 @@ def plotHist(data):
 	ax.set_xlabel('#Entities in Query')
 	#ax.set_title('')
 	ax.set_xticks([x+(width*1.5) for x in data[0]])
-	ax.set_xticklabels( tuple(data[0]) )
+	
+	data[0][-1] = '>6'
+	xlabel = tuple(data[0])
+	ax.set_xticklabels(xlabel )
 	
 	box = ax.get_position()
 	ax.set_position([box.x0, box.y0 + box.height * 0.1,
@@ -78,7 +81,7 @@ def plotHist(data):
 	fancybox=True, ncol=4, bbox_to_anchor=(0.5,-0.1))
 	# Put a legend below current axis
 	plt.show()
-	plt.savefig('paper/images/entity-head-tail-count.png')
+	#plt.savefig('paper/images/entity-head-tail-count.png')
 	
 #plot the band of entity popularity
 if __name__ == '__main__':
@@ -93,7 +96,7 @@ if __name__ == '__main__':
 			done = True
 		
 		for i in range(len(split)):
-			data[i].append(float(split[i]))
+			data[i].append(round(float(split[i]),3))
 	print data						
 	#plot1(arg[1])
 	plotHist(data)
