@@ -1,16 +1,20 @@
 The sets containing the spots detected in the 
-\head{} and \tail{} are refered to as \shead{} and \stail{} respectively. 
+\head{} and \tail{} are referred to as \shead{} and \stail{} respectively.
 For this work, we decided to map each spot to the entity with the \emph{highest commonness}, 
 i.e., the highest probability $p(e|s)$ to be associated with the spot $s$ in question.
 
-Some real query examples with annotations(spots are highlighted in bold) are provided below.
+Some real query examples with annotations (spots are highlighted in bold) are provided below.
 \begin{itemize}
-\item \fbox{\textbf{first citizens bank} and trust \textbf{raleigh nc}} is annotated with the entities 
+\item \fbox{\textbf{first citizens bank} and trust \textbf{Raleigh NC}} is
+annotated with the entities
 \texttt{Raleigh,\_North\_Carolina} and \\ \texttt{First\_Citizens\_Bank};
 % \item \fbox{\textbf{internal revenue service} de \textbf{puerto roco}} is annotated with the entities \texttt{Roco} and
 % \texttt{Internal\_Revenue\_Service};
-\item \fbox{\textbf{tennessee walking horses} in \textbf{missouri}} is annotated with the entities  \texttt{Missouri} and  \texttt{Tennessee\_Walking\_Horse};
-\item \fbox{\textbf{i love you} \textbf{remix} featuring \textbf{jim jones} and \textbf{black rob}} is annotated with the entities  \texttt{I\_Love\_You,\_Man}, \texttt{Remix}, \texttt{Jim\_Jones\_(rapper)}, \texttt{Black\_Rob}.
+\item \fbox{\textbf{Tennessee walking horses} in \textbf{Missouri}} is annotated
+with the entities  \texttt{Missouri} and  \texttt{Tennessee\_Walking\_Horse};
+\item \fbox{\textbf{i love you} \textbf{remix} featuring \textbf{Jim Jones} and
+\textbf{black rob}} is annotated with the entities  \texttt{I\_Love\_You,\_Man},
+\texttt{Remix}, \texttt{Jim\_Jones\_(rapper)}, \texttt{Black\_Rob}.
  \end{itemize}
  
  \begin{figure}
@@ -21,9 +25,13 @@ Some real query examples with annotations(spots are highlighted in bold) are pro
  \end{figure}
 
 
-We denote with \ehead{} and \etail{}, the sets containing the most probable entities for the spots. 
+We denote with \ehead{} and \etail{}, the sets containing the most probable entities for the spots. To reemphasize, while \ehead{} are 
+entities found in \head{}, \etail{} are found in \tail{}. 
 It is worth noting that this mapping could collapse different spots on the same entity (e.g., \emph{united states} and 
-\emph{usa} will both refer to United States). 
+\emph{Usa} will both refer to United States). Since we do not complete the
+disambiguation phase, we understand that selection of
+highest scored entity each time for a spot induces some bias in this analysis. We shall, in future, also take into account 
+remaining spots and terms in the query for entity disambiguation. 
 
 There are $11,152$ ($|$\shead{}$|$)  distinct spots and $8,949$ ($|$\ehead{}$|$) distinct 
 entities in the head. In the tail, the system identifies $550,953$ ($|$\stail{}$|$) distinct spots and 
@@ -33,51 +41,10 @@ this means that almost all the spots and entities in the head appear in the tail
 
 Figure~\ref{img:distributions} shows the frequency distribution of both head and tail spots as well as head and tail entities:
 it is interesting to note that while queries in head and tail follow totally different distributions, when we look at their 
-spots/entities the distributions are similar. In particular, as expected, head spots and head entities 
+spots/entities, the distributions are similar. In particular, as expected, head spots and head entities 
 follow a similar distribution, as well as the spots and entities in the tail. 
 
-Do the most frequent entities in \ehead{} and \etail{} overlap? Not so much: we sorted the entities
-based on their total frequency within all the queries of \head{} and \tail{} and we compared
-the ranks with different cuts ($50$, $100$, $500$, $5000$). We then computed the Jaccard distance
-between the ranked lists, obtaining $0.25$ when considering the most $5000$ most frequent entities,
-and $0.21$ considering the most frequent spots. For smaller cuts the Jaccard was always lower, 
-when we consider the top frequent $50$ entities, Jaccard equals to $0.05$. In Table~\ref{tab:top-frequent}
-we show the most frequent entities and spots in the head and in the tail. It is interesting to 
-observe that, while the head contains several navigational entities (google, yahoo \dots), the 
-tail contains several US countries.
 
-
-
-
-
-
-% \todo{introduce \shead{} \stail{} \ehead{} \etail{} and
-% \begin{itemize}
-% 	\item comment table with commonness and link probability + top entities/spots
-% 	\item put total numbers
-% 	\item put global distribution
-% \end{itemize}
-% }
-
-%\todo{introduce the comparison between tail and head }
-
-%\todo{describe Figure~\ref{img:headTailEntPercent}}
-
-%\todo{explain how head tail ratio is computed, present and comment the graph }
-
-%\todo{conclusions and future works (e.g, use a modern query log, improve entity linking on queries, considering sessions)}
-
-
-
-
-
-% diego put this in the intro if there's space
-% Tail queries have been often mapped to the head \cite{} by using bag-of-word representations.
-% Lately they have also been linked with the head queries through entities. However, in this work
-% we attempt to study the extent to which the entities in the tail queries can be linked to entities
-% in the head queries. It is important to know how much will entity linking at tail benefit query mining.
-% We shall, from now on refer to entities in head queries as `head entity'
-% and entities occuring in the tail as `tail entity'.
 \begin{figure*}[t]
 	\footnotesize
 	\centering
@@ -107,28 +74,82 @@ american idol  & 23,665   &  Yahoo!\_Mail       & 28,238   &  black   	 &	13,921
 \caption{Most 15 frequent spots and entities detected in the head (\shead{}, \ehead{}) and in the tail (\stail{}, \etail{})}
 \end{figure*}
 
+Do the most frequent entities in \ehead{} and \etail{} overlap? Not so much: we sorted the entities
+based on their total frequency within all the queries of \head{} and \tail{} to compare
+the ranked lists at different cutoffs ($50$, $100$, $500$, $5000$). We then computed the Jaccard distance
+between the ranked lists, obtaining $0.25$ when considering the most $5000$ most frequent entities,
+and $0.21$ considering the most frequent spots. At smaller cutoffs the Jaccard was considerably small, 
+when we consider the top $50$ entities in head and tail, Jaccard equals to $0.05$. 
+Table~\ref{tab:top-frequent} lists the most frequent entities and spots in both head and the tail. 
+It is interesting to observe that, while the head contains several navigational entities (google, yahoo etc.), the 
+tail contains several US countries.
+% \todo{introduce \shead{} \stail{} \ehead{} \etail{} and
+% \begin{itemize}
+% 	\item comment table with commonness and link probability + top entities/spots
+% 	\item put total numbers
+% 	\item put global distribution
+% \end{itemize}
+% }
 
-% We begin by analyzing the volume of entities found in the tail. Of X unique tail queries,
-% 63.2\% contain atleast one entity.
-%Of queries containing more than one entity, 86.2\% queries contain atleast one head entity. 
-%Once, the queries in the tail are tagged with entities, 
-Next we look at what fraction of queries containing either only head entities, \emph{tail entities}, i.e., entities 
-that appear \emph{only} in the tail ($\in$ \etail{} $\setminus$ \ehead{})
-or both head and tail entities. Figure \ref{img:headTailEntPercent} shows the percentage of 
-queries with only head or tail entities or both. One can clearly see that a large percentage of tail 
-queries contain both head and tail entities. Moreover, this percentage gradually rises with the 
-number of entities in the query. This could mean that in longer queries people look
-for connections among popular entities and rare entities. 
+%\todo{introduce the comparison between tail and head }
+
+%\todo{describe Figure~\ref{img:headTailEntPercent}}
+
+%\todo{explain how head tail ratio is computed, present and comment the graph }
+
+%\todo{conclusions and future works (e.g, use a modern query log, improve entity linking on queries, considering sessions)}
+
+% diego put this in the intro if there's space
+% Tail queries have been often mapped to the head \cite{} by using bag-of-word representations.
+% Lately they have also been linked with the head queries through entities. However, in this work
+% we attempt to study the extent to which the entities in the tail queries can be linked to entities
+% in the head queries. It is important to know how much will entity linking at tail benefit query mining.
+% We shall, from now on refer to entities in head queries as `head entity'
+% and entities occuring in the tail as `tail entity'.
 
 \begin{figure}
 \label{img:headTailEntPercent}
   \centering
-    \includegraphics[width = 0.5\textwidth]{images/entity-head-tail-count.png}
-	
-	\caption{Percentage of queries referring head, tail or both entities}
-	
+    \includegraphics[width = 0.45\textwidth]{images/entity-head-tail-count.png}
+	\caption{Percentage of tail queries with only head, only tail or both entities}
 \end{figure}
  
+% We begin by analyzing the volume of entities found in the tail. Of X unique tail queries,
+% 63.2\% contain atleast one entity.
+%Of queries containing more than one entity, 86.2\% queries contain atleast one head entity. 
+%Once, the queries in the tail are tagged with entities, 
+There are several queries in the log with multiple entities. 
+%The number of entities and corresponding query distribution is shown in Table \ref{table:entityQueryDist}. 
+On average tail queries tend to have more entities than head. 
+To investigate whether tail queries inquire about entities in the head, we analyze percentage of tail queries containing 
+only head entities, only tail entities ($\in$ \etail{} $\setminus$ \ehead{}) or both. Figure \ref{img:headTailEntPercent} 
+depicts the percentage of queries with respect to number of entities in the query. 
+One can clearly see that a large percentage of tail queries contains both head and tail entities. 
+Moreover, this percentage gradually rises with the number of entities in the query. 
+This indicates that in longer queries people look for connections among popular entities and rare entities. 
+%Next we analyze what fraction of queries contain only head entities, only \emph{tail entities}, i.e., entities 
+%that appear \emph{only} in the tail ($\in$ \etail{} $\setminus$ \ehead{})
+%or both head and tail entities.
+
+%\begin{table}
+%\caption{Number of Entities vs Head and Tail Queries}	
+%\label{table:entityQueryDist}
+%\centering
+%\begin{tabular}{|l|l|l|}
+%\hline
+%\#Entities	&	Tail	&	Head	\\ \hline
+%0	&	2844620	&	5976	\\ \hline
+%1	&	2622873	&	12904	\\ \hline
+%2	&	1731256	&	1039	\\ \hline
+%3	&	457946	&	32	\\ \hline
+%4	&	74125	&	1	\\ \hline
+%5	&	10757	&	1	\\ \hline
+%6	&	2416	&	0	\\ \hline
+%>6	&	2613	&	0	\\ \hline
+%\end{tabular}
+%\end{table}
+
+
 % Provided that such a large percentage of tail queries contain both head and tail entities, it
 % will be useful to see the ratio of head entities to tail entities in these queries. Especially,
 % for queries with more than 2 entities, it would be interesting to see whether head queries occur more
@@ -243,8 +264,6 @@ for connections among popular entities and rare entities.
 %\item Frequency distribution of entities in head and tail
 %\item Head and tail entity distribution in queries
 %\end{itemize}
-
-
 % \begin{tabular}{ccccc}
 % \toprule
 % link probability & commonness & $k$ & $J^{spot}_k$ & $J^{top entity}_k$ \\
@@ -268,9 +287,3 @@ for connections among popular entities and rare entities.
 % 					 &						   & $5,000$ &  $0.22$   &   $0.28$  \\
 % \bottomrule
 % \end{tabular}
-
-
-
-
-
-
