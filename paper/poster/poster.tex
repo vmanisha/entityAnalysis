@@ -17,6 +17,8 @@
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{subcaption}
+\usepackage{caption}
 
 \newcommand{\tail}[1]{$Q_{tail}${}}
 \newcommand{\head}[1]{$Q_{head}${}}
@@ -102,57 +104,59 @@
 
 
 \begin{multicols}{2}
-	
-	With the creation and rapid development of knowledge bases, it has become easier
-	 to understand the \textbf{underlying semantics of unstructured text} (short or long) on the web.  
-	 In this work we especially look at the impact of entity linking on search logs. 
-	 Search queries follow a \emph{Zipfian} distribution wherein other than few popular queries 
-	 (\emph{head queries}), a significant percentage of queries (\emph{tail queries}) occur rarely. 
-	 Given a search log, there is sufficient data to analyze head queries but insufficient 
-	 data (low frequency, limited clicks) to draw any conclusions about tail queries. 
-	%Search queries are primary means of finding information. While a handful of 
-	 %queries account for majority of search volume, a large number of queries 
-	 %occur infrequently. The individual frequency and sparsity of related statistics makes 
-	 %it difficult to draw any conclusions about such rare queries.
-	 %renders it difficult to draw any conclusions about the nature of the query. 
-	 In this work we focus on quantifying the extent of \textbf{overlap between long tail
-	 	 and head queries} by means of entity linking. We specifically analyze the 
-	 frequency distribution of entities in head and tail queries. 
-	 %We also analyze the ratio of popular entities to rare entities in tail queries. 
-	
+\ptitle{Introduction}
+	Search queries follow a \emph{Zipfian} distribution.
 	 
-	  \vspace{10mm}
-	  \begin{center}
-	  \includegraphics[width=0.9\columnwidth]{img/long-tail.eps}
-	  \end{center}
-	  
+	\begin{itemize}
+	 
+	 \item \textbf{\emph{Head queries}: }Few popular queries with a large volume.
+	 \item \textbf{\emph{Tail queries}: }A significant percentage of queries that occur rarely. 
+	
+
+	\end {itemize}	
+	\vspace{10mm}
+	\begin{center}
+	\includegraphics[width=0.9\columnwidth]{img/long-tail.eps}
+	\end{center}
+	 	 
+	Given a search log, there is \textbf{\color{blue}sufficient data} to analyze \textbf{\color{blue}head queries} 
+	but \textbf{\color{red}insufficient data (low frequency, limited clicks)} to draw any conclusions 
+	about \textbf{\color{red}tail queries}. 
+	
+	\begin{itemize}
+	
+	\item Knowledge bases have enabled understanding of short or long unstructured text. 
+	
+	\item Can we quantifying the extent of \textbf{overlap between long tail and head queries} 
+	by means of \textbf{entity linking}.
+	
+	\end{itemize}
+	
  \ptitle{Research Questions}
   
-	  we are interested in studying the 
-	  relationship between the head and the tail queries through the entities they contain. 
-	  Our primary research questions are:
 	  \begin{itemize}
 		\LARGE 
 	  	\item Are tail queries a different means to inquire about entities mentioned in the head queries? 
-	  	\item Can we find tail queries about entities that are not searched in the head (we will call them \emph{tail entities})?
-	  	\item Can we find a relationship between \emph{ tail entities} and \emph{head entities}?  
+	  	\item Can we find tail queries about entities that are not searched in the head (\emph{tail entities})?
+	  	\item Can we find a relationship between \emph{tail entities} and \emph{head entities}?  
 	  \end{itemize}
-	 
+	
+	 %We specifically analyze the frequency distribution of entities in head and tail queries. 
+	
+
 \ptitle{AOL Query Log}
 
-We perform our analysis on the AOL query log, since it is publicly available\footnote{\url{http://www.gregsadetsky.com/aol-data/}}. AOL log consists of approximately 20 million queries submitted by $650,000$ users from March to May 2006. Queries are normalized (text lowercased, non ascii characters removed) and there are in total $10,154,742$ distinct queries. 
+AOL log consists of approximately 20 million queries submitted by $650,000$ users. There are in total $10,154,742$ distinct queries. 
 We extract 2 distinct sets from these queries: 
 \begin{description}
-	\item{\tail{}} The set of queries in the long tail, i.e. queries that appear in the log with a frequency \emph{lower than or equal} to $2$. The set contains $7,746,607$ distinct queries, i.e. $76\%$ of distinct queries, but it is $26\%$ of the total volume of the queries.
-	\item{\head{}} The set of queries in the head. It contains queries that appear with a frequency \emph{greater than} $99$. The set contains $19,953$ distinct queries, i.e. $0.002\%$ if we look at the distinct queries, but still these queries represent $26\%$ of total query volume.% if we consider the frequencies of the queries.
+	\item{\textbf{\tail{}}} Tail queries with frequency \emph{lower than or equal} to $2$. Contains $7,746,607$ distinct queries, i.e. $76\%$ of distinct queries. %, but it is $26\%$ of the total volume of the queries.
+	\item{\textbf{\head{}}} Head queries with frequency \emph{greater than} $99$. The set contains $19,953$ distinct queries, i.e. $0.002\%$. % if we look at the distinct queries, these queries represent $26\%$ of total query volume.
 \end{description}
-Although, the two sets differ in number of queries ($\sim19$K versus $\sim7$M), they cover the same fraction of total queries issued to the search engine. All our analysis are performed on these two sets.
-
-
+Although, the two sets differ in number of queries ($\sim19$K versus $\sim7$M), they \textbf{cover the same fraction of total queries issued} to the search engine. %All our analysis are performed on these two sets.
 
 \ptitle{Entity Linking Problem}
 
-The entity linking task aims at identifying, given a plain document, the small fragments of text (interchangeably called \emph{mentions} or \emph{spots}) referring to any \emph{named entity} that is listed in a given knowledge base, e.g. Wikipedia. The ambiguity of natural language makes it a non trivial task. The same entity can be in fact mentioned with different text fragments, e.g., ``President Kennedy'' or ``John F. Kennedy''. On the other hand, the same mention may refer to different entities, e.g., ``Michael Collins'' may refer to either the well known astronaut, or to the Irish leader and president of the Irish provisional government in 1922.
+%The entity linking task aims at identifying, given a plain document, the small fragments of text (interchangeably called \emph{mentions} or \emph{spots}) referring to any \emph{named entity} that is listed in a given knowledge base, e.g. Wikipedia. The ambiguity of natural language makes it a non trivial task. The same entity can be in fact mentioned with different text fragments, e.g., ``President Kennedy'' or ``John F. Kennedy''. On the other hand, the same mention may refer to different entities, e.g., ``Michael Collins'' may refer to either the well known astronaut, or to the Irish leader and president of the Irish provisional government in 1922.
 
 \vspace{5mm}
 \begin{center}
@@ -171,6 +175,37 @@ at least one spot in $13,977$ ($70\%$) and $4,901,987$ ($63\%$) \head{} and \tai
 respectively.
 
 \ptitle{Analysis}
+\
+\begin {itemize}
+
+	\item {\textbf{Spot-Entity Distribution}:} While queries in head and tail follow totally different distributions, when we 		look at their spots/entities, the distributions are similar as shown in Figure \ref{img:distributions}.  
+	
+
+	\item {\textbf{Popular Head and Tail Entities Overlap}:} On sorting the entities based on their frequency in \head{} 		and \tail{} respectively and comparing the ranked lists at different cutoffs, Jaccard distance between the ranked lists is 		0.25 at 5000. At smaller cutoffs (top 50 entities) the Jaccard is 0.05. 
+	
+	\item {\textbf{Queries with Multiple Entities}:} There are several queries in the log with multiple entities. 
+	On average tail queries have more entities than head. \textbf{Do tail queries inquire about entities in the head?} The percentage of 		tail queries containing only head entities, only tail entities ($\in$ \etail{} $\setminus$ \ehead{}) or both is shown in 		Figure \ref{img:headTailEntPercent}.
+	\vspace{10mm}
+	\begin{figure}	
+	\centering
+	\begin{subfigure}
+		\centering
+		%\begin{center}
+		\includegraphics[width=0.6\columnwidth]{img/head-tail-ent-spot-dist.eps}
+		\caption{Frequency distributions for spots and entities in \head{} (spot-head, ent-head) and \tail{} (spot-tail, ent-tail)}
+		\label{img:distributions}
+	\end{subfigure}
+	%\end{center}
+	\begin{subfigure}
+		%\begin{center}
+		\centering
+		\includegraphics[width=0.5\columnwidth]{img/entity-head-tail-count.eps}
+		\caption{Percentage of tail queries with only head, only tail or both entities}
+		\label{img:headTailEntPercent}
+	%\end{center}
+	\end{subfigure}
+	\end{figure}
+\end {itemize}
 
 
 \begin{tabular}{lc|lc|lc|lc}
@@ -197,84 +232,6 @@ american idol  & 23,665   &  Yahoo!\_Mail       & 28,238   &  black   	 &	13,921
 \end{tabular}
 
 
-
-
-% \ptitle{Motivations}
-% Several entity linking algorithms were recently proposed for annotating documents with entities. Performing a fair comparison among these techniques is very hard. To the best of our knowledge, only a few authors released the source code of their algorithms or provide
-% a REST API for annotating documents using their method. As a result, evaluating today the performance of a method on a single subtask, comparing different techniques or mixing different strategies together is difficult.
-%
-% \vspace{4mm}
-% \textbf{We strongly believe that it is important to share a unique framework where each subtask is well separated and easy to isolate in order to study its performance, perform fair comparisons and improve the state of the art.}
-%
-%
-% \ptitle{Dexter Framework}
-%
-% In this work we present a new open source framework, called Dexter, that implements some popular algorithms and provides several tools useful to develop an entity linking technique.
-%
-% % \vspace{10mm}
-% % \begin{center}
-% % \includegraphics[width=0.20\columnwidth]{img/dexter-logo.eps}
-% % \end{center}
-%
-% \vspace{10mm}
-% \begin{center}
-% \includegraphics[width=0.80\columnwidth]{img/screenshot.eps}
-% \end{center}
-%
-% \ptitle{Dexter Architecture}
-%
-% Dexter is developed in Java and is organized in several Maven modules.
-%
-% \vspace{10mm}
-% \begin{center}
-% \includegraphics[width=0.8\columnwidth]{./img/dexter-architecture.eps}
-% \end{center}
-%
-% \ptitle{Plug and Play}
-%
-% \lstset{language=Java,
-%  		   basicstyle=\fontsize{24}{26}\ttfamily,
-%            keywordstyle=\color{blue}\ttfamily,
-%            stringstyle=\color{red}\ttfamily,
-%            commentstyle=\color{green}\ttfamily}
-% \begin{lstlisting}
-% public class TopScoreEntityDisambiguator implements Disambiguator {
-%         @Override
-%         public EntityMatchList disambiguate(SpotMatchList sml) {
-%                 EntityMatchList eml = new EntityMatchList();
-%                 for (SpotMatch match : sml){
-%                         EntityMatchList list = match.getEntities();
-%                         if (! list.isEmpty()){
-%                                 list.sort();
-%                                 eml.add(list.get(0));
-%                         }
-%                 }
-%                 return eml;
-%         }
-% }
-% \end{lstlisting}
-%
-% \ptitle{Conclusion and Future Work}
-%
-% \begin{itemize}
-% \item We implemented two state-of-the-art methods in Dexter: TAGME and Wikiminer. We plan to implement several other state of the art approaches in order to show their performance and efficiency on a wide range of datasets;
-% \item We plan to investigate the performance of the entity linking methods on different evaluation datasets. We have recently released
-% \textbf{Elianto}  a web-deployed tool that allows to crowdsource the creation of manually annotated datasets;
-% \item We plan to support different Wikipedia languages (actually only English is supported);
-% \item We intend to improve the performance of the annotator, in terms of result's quality, response time and resource usage.
-% \end{itemize}
-%
-% \ptitle{Fork me on Github!}
-%
-% The code is available on Github at the following address:
-% \begin{itemize}
-% 	\item \url{https://github.com/diegoceccarelli/dexter}
-% \end{itemize}
-%
-% A demo webapp and some other useful informations can be found here:
-% \begin{itemize}
-% 	\item \url{http://www.dxtr.it}
-% \end{itemize}
 
 \end{multicols}
 \vfill
