@@ -157,11 +157,6 @@ Although, the two sets differ in number of queries ($\sim19$K versus $\sim7$M), 
 
 %The entity linking task aims at identifying, given a plain document, the small fragments of text (interchangeably called \emph{mentions} or \emph{spots}) referring to any \emph{named entity} that is listed in a given knowledge base, e.g. Wikipedia. The ambiguity of natural language makes it a non trivial task. The same entity can be in fact mentioned with different text fragments, e.g., ``President Kennedy'' or ``John F. Kennedy''. On the other hand, the same mention may refer to different entities, e.g., ``Michael Collins'' may refer to either the well known astronaut, or to the Irish leader and president of the Irish provisional government in 1922.
 
-\vspace{5mm}
-\begin{center}
-\includegraphics[width=0.92\columnwidth]{img/annotation-example.eps}
-\end{center}
-
 The annotation is usually organized in three subtasks:
 \begin{enumerate}
 	\item \textbf{Spotting}: discover the fragments that could refer to an entity. A set of candidate mentions is detected, and for each mention a list of candidate entities is produces;
@@ -173,41 +168,25 @@ Our entity linker Dexter (\url{dxtr.it}) identifies
 at least one spot in $13,977$ ($70\%$) and $4,901,987$ ($63\%$) \head{} and \tail{} 
 respectively.
 
+\vspace{5mm}
+\begin{center}
+\includegraphics[width=0.92\columnwidth]{img/annotation-example.eps}
+\end{center}
+
 \ptitle{Analysis}
 \
 \begin {itemize}
 
 	\item {\textbf{Spot-Entity Distribution}:} While queries in head and tail follow totally different distributions, when we 		look at their spots/entities, the distributions are similar as shown in Figure \ref{img:distributions}.  
-	
-
-	\item {\textbf{Popular Head and Tail Entities Overlap}:} On sorting the entities based on their frequency in \head{} 		and \tail{} respectively and comparing the ranked lists at different cutoffs, Jaccard distance between the ranked lists is 		0.25 at 5000. At smaller cutoffs (top 50 entities) the Jaccard is 0.05. 
-	
-	\item {\textbf{Queries with Multiple Entities}:} There are several queries in the log with multiple entities. 
-	On average tail queries have more entities than head. \textbf{Do tail queries inquire about entities in the head?} The percentage of 		tail queries containing only head entities, only tail entities ($\in$ \etail{} $\setminus$ \ehead{}) or both is shown in 		Figure \ref{img:headTailEntPercent}.
-	
-	%\begin{figure}	
-	%\begin{subfigure}
 		\vspace{10mm}
 		\begin{center}
 		\includegraphics[width=0.6\columnwidth]{img/head-tail-ent-spot-dist.eps}
 		%\caption{Frequency distributions for spots and entities in \head{} (spot-head, ent-head) and \tail{} (spot-tail, ent-tail)}
 		\label{img:distributions}
 		\end{center}
-	%\end{subfigure}
-		
-	%\begin{subfigure}
-		\vspace{10mm}
-		\begin{center}
-		%\centering
-		\includegraphics[width=0.5\columnwidth]{img/entity-head-tail-count.eps}
-		%\caption{Percentage of tail queries with only head, only tail or both entities}
-		\label{img:headTailEntPercent}
-		\end{center}
-	%\end{subfigure}
-	%\end{figure}
-\end {itemize}
 
-
+	\item {\textbf{Popular Head and Tail Entities Overlap}:} On sorting the entities based on their frequency in \head{} 		and \tail{} respectively and comparing the ranked lists at different cutoffs, Jaccard distance between the ranked lists is 		0.25 at 5000. At smaller cutoffs (top 50 entities) the Jaccard is 0.05. 
+	
 \begin{tabular}{lc|lc|lc|lc}
 \toprule
 \multicolumn{4}{c}{\head{}} & \multicolumn{4}{c}{\tail{}}\\
@@ -230,6 +209,26 @@ craigslist     & 27,222   &  American\_Idol     & 28,890   &  georgia 	 &	14,525
 american idol  & 23,665   &  Yahoo!\_Mail       & 28,238   &  black   	 &	13,921   &   Michigan        & 15,763 \\
 \bottomrule
 \end{tabular}
+
+	\item {\textbf{Queries with Multiple Entities}:} There are several queries in the log with multiple entities. 
+	On average tail queries have more entities than head. \textbf{Do tail queries inquire about entities in the head?} The percentage of 		tail queries containing only head entities, only tail entities ($\in$ \etail{} $\setminus$ \ehead{}) or both is shown in 		Figure \ref{img:headTailEntPercent}.
+	
+	%\begin{figure}	
+	%\begin{subfigure}
+	
+	%\end{subfigure}
+		
+	%\begin{subfigure}
+		\vspace{10mm}
+		\begin{center}
+		%\centering
+		\includegraphics[width=0.5\columnwidth]{img/entity-head-tail-count.eps}
+		%\caption{Percentage of tail queries with only head, only tail or both entities}
+		\label{img:headTailEntPercent}
+		\end{center}
+	%\end{subfigure}
+	%\end{figure}
+\end {itemize}
 
 
 
