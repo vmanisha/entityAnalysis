@@ -77,7 +77,7 @@
 	&
 		\begin{minipage}[c]{0.98\textwidth-2\logosize}
 		\centering\textsc{}
-		\Huge \textsc{Bringing the Head Closer to the Tail\\ with Entity Linking}\\[8mm]
+		\Huge \textsc{Bringing Head Closer to the Tail\\ with Entity Linking}\\[8mm]
 	\Large{Manisha Verma$^{1}$, Diego Ceccarelli$^{2,3}$}\\
 	\Large{$^1$ UCL Department Of Computer Science}
 	\Large{$^2$ ISTI-CNR, Pisa, Italy}\hspace{2cm}\Large{$^3$ IMT Lucca}\\
@@ -142,17 +142,6 @@
 	
 	 %We specifically analyze the frequency distribution of entities in head and tail queries. 
 	
-
-\ptitle{AOL Query Log}
-
-AOL log consists of approximately 20 million queries submitted by $650,000$ users. There are in total $10,154,742$ distinct queries. 
-We extract 2 distinct sets from these queries: 
-\begin{description}
-	\item{\textbf{\tail{}}} Tail queries with frequency \emph{lower than or equal} to $2$. Contains $7,746,607$ distinct queries, i.e. $76\%$ of distinct queries. %, but it is $26\%$ of the total volume of the queries.
-	\item{\textbf{\head{}}} Head queries with frequency \emph{greater than} $99$. The set contains $19,953$ distinct queries, i.e. $0.002\%$. % if we look at the distinct queries, these queries represent $26\%$ of total query volume.
-\end{description}
-Although, the two sets differ in number of queries ($\sim19$K versus $\sim7$M), they \textbf{cover the same fraction of total queries issued} to the search engine. %All our analysis are performed on these two sets.
-
 \ptitle{Entity Linking Problem}
 
 %The entity linking task aims at identifying, given a plain document, the small fragments of text (interchangeably called \emph{mentions} or \emph{spots}) referring to any \emph{named entity} that is listed in a given knowledge base, e.g. Wikipedia. The ambiguity of natural language makes it a non trivial task. The same entity can be in fact mentioned with different text fragments, e.g., ``President Kennedy'' or ``John F. Kennedy''. On the other hand, the same mention may refer to different entities, e.g., ``Michael Collins'' may refer to either the well known astronaut, or to the Irish leader and president of the Irish provisional government in 1922.
@@ -172,9 +161,31 @@ respectively.
 \begin{center}
 \includegraphics[width=0.92\columnwidth]{img/annotation-example.eps}
 \end{center}
+%Some real query examples with annotations are:
+\begin{itemize}
+\item \fbox{\textbf{first citizens bank} and trust \textbf{Raleigh NC}} contains
+\texttt{Raleigh,\_North\_Carolina} and \texttt{First\_Citizens\_Bank};
+% \item \fbox{\textbf{internal revenue service} de \textbf{puerto roco}} is annotated with the entities \texttt{Roco} and
+% \texttt{Internal\_Revenue\_Service};
+\item \fbox{\textbf{Tennessee walking horses} in \textbf{Missouri}} is annotated
+with \texttt{Missouri} and  \texttt{Tennessee\_Walking\_Horse};
+\item \fbox{\textbf{i love you} \textbf{remix} featuring \textbf{Jim Jones} and
+\textbf{black rob}} contains  \texttt{I\_Love\_You,\_Man},
+\texttt{Remix}, \texttt{Jim\_Jones\_(rapper)}, \texttt{Black\_Rob}.
+ \end{itemize}
+
 
 \ptitle{Analysis}
-\
+
+AOL log consists of approximately 20 million queries submitted by $650,000$ users. There are in total $10,154,742$ distinct queries. 
+We extract 2 distinct sets from these queries: 
+\begin{description}
+	\item{\textbf{\tail{}}} Tail queries with frequency \emph{lower than or equal} to $2$. Contains $7,746,607$ distinct queries, i.e. $76\%$ of distinct queries. %, but it is $26\%$ of the total volume of the queries.
+	\item{\textbf{\head{}}} Head queries with frequency \emph{greater than} $99$. The set contains $19,953$ distinct queries, i.e. $0.002\%$. % if we look at the distinct queries, these queries represent $26\%$ of total query volume.
+\end{description}
+Although, the two sets differ in number of queries ($\sim19$K versus $\sim7$M), they \textbf{cover the same fraction of total queries issued} to the search engine. %All our analysis are performed on these two sets.
+
+
 \begin {itemize}
 
 	\item {\textbf{Spot-Entity Distribution}:} While queries in head and tail follow totally different distributions, when we 		look at their spots/entities, the distributions are similar as shown in Figure \ref{img:distributions}.  
