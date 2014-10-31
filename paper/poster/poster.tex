@@ -115,7 +115,7 @@
 	\end {itemize}	
 	\vspace{10mm}
 	\begin{center}
-	\includegraphics[width=0.9\columnwidth]{img/long-tail.eps}
+	\includegraphics[width=0.6\columnwidth]{img/long-tail.eps}
 	\end{center}
 	 	 
 	Given a search log, there is \textbf{\color{blue}sufficient data} to analyze \textbf{\color{blue}head queries} 
@@ -162,17 +162,17 @@ respectively.
 \includegraphics[width=0.92\columnwidth]{img/annotation-example.eps}
 \end{center}
 %Some real query examples with annotations are:
-\begin{itemize}
-\item \fbox{\textbf{first citizens bank} and trust \textbf{Raleigh NC}} contains
-\texttt{Raleigh,\_North\_Carolina} and \texttt{First\_Citizens\_Bank};
-% \item \fbox{\textbf{internal revenue service} de \textbf{puerto roco}} is annotated with the entities \texttt{Roco} and
-% \texttt{Internal\_Revenue\_Service};
-\item \fbox{\textbf{Tennessee walking horses} in \textbf{Missouri}} is annotated
-with \texttt{Missouri} and  \texttt{Tennessee\_Walking\_Horse};
-\item \fbox{\textbf{i love you} \textbf{remix} featuring \textbf{Jim Jones} and
-\textbf{black rob}} contains  \texttt{I\_Love\_You,\_Man},
-\texttt{Remix}, \texttt{Jim\_Jones\_(rapper)}, \texttt{Black\_Rob}.
- \end{itemize}
+% \begin{itemize}
+% \item \fbox{\textbf{first citizens bank} and trust \textbf{Raleigh NC}} contains
+% \texttt{Raleigh,\_North\_Carolina} and \texttt{First\_Citizens\_Bank};
+% % \item \fbox{\textbf{internal revenue service} de \textbf{puerto roco}} is annotated with the entities \texttt{Roco} and
+% % \texttt{Internal\_Revenue\_Service};
+% \item \fbox{\textbf{Tennessee walking horses} in \textbf{Missouri}} is annotated
+% with \texttt{Missouri} and  \texttt{Tennessee\_Walking\_Horse};
+% \item \fbox{\textbf{i love you} \textbf{remix} featuring \textbf{Jim Jones} and
+% \textbf{black rob}} contains  \texttt{I\_Love\_You,\_Man},
+% \texttt{Remix}, \texttt{Jim\_Jones\_(rapper)}, \texttt{Black\_Rob}.
+%  \end{itemize}
 
 
 \ptitle{Analysis}
@@ -185,19 +185,22 @@ We extract 2 distinct sets from these queries:
 \end{description}
 Although, the two sets differ in number of queries ($\sim19$K versus $\sim7$M), they \textbf{cover the same fraction of total queries issued} to the search engine. %All our analysis are performed on these two sets.
 
+\vspace{1cm}
 
-\begin {itemize}
-
-	\item {\textbf{Spot-Entity Distribution}:} While queries in head and tail follow totally different distributions, when we 		look at their spots/entities, the distributions are similar as shown in Figure \ref{img:distributions}.  
+\textbf{Spot-Entity Distribution}: While queries in head and tail follow totally different distributions, when we 		look at their spots/entities, the distributions are similar as shown below.
 		\vspace{10mm}
 		\begin{center}
-		\includegraphics[width=0.6\columnwidth]{img/head-tail-ent-spot-dist.eps}
+		\includegraphics[width=0.9\columnwidth]{img/head-tail-ent-spot-dist.eps}
 		%\caption{Frequency distributions for spots and entities in \head{} (spot-head, ent-head) and \tail{} (spot-tail, ent-tail)}
 		\label{img:distributions}
 		\end{center}
 
-	\item {\textbf{Popular Head and Tail Entities Overlap}:} On sorting the entities based on their frequency in \head{} 		and \tail{} respectively and comparing the ranked lists at different cutoffs, Jaccard distance between the ranked lists is 		0.25 at 5000. At smaller cutoffs (top 50 entities) the Jaccard is 0.05. 
-	
+\textbf{Popular Head and Tail Entities Overlap}: On sorting the entities based on their frequency in \head{} 		and \tail{} respectively and comparing the ranked lists at different cutoffs, Jaccard distance between the ranked lists is 		0.25 at 5000. At smaller cutoffs (top 50 entities) the Jaccard is 0.05. 
+
+
+	\vspace{1cm}
+\begin{center}
+	{\small
 \begin{tabular}{lc|lc|lc|lc}
 \toprule
 \multicolumn{4}{c}{\head{}} & \multicolumn{4}{c}{\tail{}}\\
@@ -218,9 +221,11 @@ map quest      & 27,949   &  Tattoo            & 33,113   &  new jersey  &   14,
 american idol  & 23,665   &  Yahoo!\_Mail       & 28,238   &  black   	 &	13,921   &   Michigan        & 15,763 \\
 \bottomrule
 \end{tabular}
+}
+\end{center}
 
-	\item {\textbf{Queries with Multiple Entities}:} There are several queries in the log with multiple entities. 
-	On average tail queries have more entities than head. \textbf{Do tail queries inquire about entities in the head?} The percentage of 		tail queries containing only head entities, only tail entities ($\in$ \etail{} $\setminus$ \ehead{}) or both is shown in 		Figure \ref{img:headTailEntPercent}.
+\textbf{Queries with Multiple Entities}:There are several queries in the log with multiple entities. 
+	On average tail queries have more entities than head. \textbf{Do tail queries inquire about entities in the head?} The percentage of 		tail queries containing only head entities, only tail entities ($\in$ \etail{} $\setminus$ \ehead{}) or both is shown below.
 	
 	%\begin{figure}	
 	%\begin{subfigure}
@@ -231,13 +236,13 @@ american idol  & 23,665   &  Yahoo!\_Mail       & 28,238   &  black   	 &	13,921
 		\vspace{10mm}
 		\begin{center}
 		%\centering
-		\includegraphics[width=0.5\columnwidth]{img/entity-head-tail-count.eps}
+		\includegraphics[width=0.7\columnwidth]{img/entity-head-tail-count.eps}
 		%\caption{Percentage of tail queries with only head, only tail or both entities}
 		\label{img:headTailEntPercent}
 		\end{center}
 	%\end{subfigure}
 	%\end{figure}
-\end {itemize}
+
 
 
 
