@@ -19,8 +19,8 @@
 \usepackage{color}
 
 
-\newcommand{\tail}[1]{$Q_{tail}${}}
-\newcommand{\head}[1]{$Q_{head}${}}
+\newcommand{\tail}[1]{$\mathbf{Q_{tail}}${}}
+\newcommand{\head}[1]{$\mathbf{Q_{head}}${}}
 \newcommand{\stail}[1]{$S_{tail}${}}
 \newcommand{\shead}[1]{$S_{head}${}}
 \newcommand{\etail}[1]{$E_{tail}${}}
@@ -180,8 +180,8 @@ with \texttt{Missouri} and  \texttt{Tennessee\_Walking\_Horse};
 AOL log consists of approximately 20 million queries submitted by $650,000$ users. There are in total $10,154,742$ distinct queries. 
 We extract 2 distinct sets from these queries: 
 \begin{description}
-	\item{\textbf{\tail{}}} Tail queries with frequency \emph{lower than or equal} to $2$. Contains $7,746,607$ distinct queries, i.e. $76\%$ of distinct queries. %, but it is $26\%$ of the total volume of the queries.
-	\item{\textbf{\head{}}} Head queries with frequency \emph{greater than} $99$. The set contains $19,953$ distinct queries, i.e. $0.002\%$. % if we look at the distinct queries, these queries represent $26\%$ of total query volume.
+	\item{\textbf{\tail{}:}} Tail queries with frequency \emph{lower than or equal} to $2$. Contains $7,746,607$ distinct queries, i.e. $76\%$ of distinct queries. %, but it is $26\%$ of the total volume of the queries.
+	\item{\textbf{\head{}:}} Head queries with frequency \emph{greater than} $99$. The set contains $19,953$ distinct queries, i.e. $0.002\%$. % if we look at the distinct queries, these queries represent $26\%$ of total query volume.
 \end{description}
 Although, the two sets differ in number of queries ($\sim19$K versus $\sim7$M), they \textbf{cover the same fraction of total queries issued} to the search engine. %All our analysis are performed on these two sets.
 
@@ -210,13 +210,11 @@ ebay           & 142,257  &   EBay   		   & 187,633  &  edu     	 &	26,641   &  
 yahoo.com      & 104,696  &  MapQuest          & 135,179  &  state   	 &	26,066   &   .edu    		& 26,642 \\
 mapquest       & 88,617   &  Google\_Search     & 98,112   &  california  &   25,233  &   U.S.\_state      & 26,392 \\
 google com     & 85,670   &  Hotmail           & 53,925   &  new york    &   24,865  &   California      & 25,859 \\
-my space       & 48,401   &	  Bank\_of\_America  & 46,922   &  hotel   	 &	20,018   &   Real\_estate     & 25,232 \\
 www.yahoo.com  & 44,198   &  Craigslist        & 45,586   &  real estate &   19,702  &   Myspace 		& 24,998 \\
 internet       & 39,865   &  Ask.com           & 39,873   &  myspace 	 &	18,533   &   Floruit 		& 24,207 \\
 ebay com       & 30,652   &  Internet          & 39,865   &  restaurant  &  17,065   &   Restaurant      & 21,996 \\
 hotmail.com    & 28,492   &  Pornography       & 35,089   &  michigan    &   15,635  &   Hotel   		& 20,289 \\
 map quest      & 27,949   &  Tattoo            & 33,113   &  new jersey  &   14,813  &   Nudity  		& 18,245 \\
-craigslist     & 27,222   &  American\_Idol     & 28,890   &  georgia 	 &	14,525   &   United\_States   & 16,680 \\
 american idol  & 23,665   &  Yahoo!\_Mail       & 28,238   &  black   	 &	13,921   &   Michigan        & 15,763 \\
 \bottomrule
 \end{tabular}
