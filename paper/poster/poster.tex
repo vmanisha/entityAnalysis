@@ -17,8 +17,7 @@
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{color}
-\usepackage{subcaption}
-\usepackage{caption}
+
 
 \newcommand{\tail}[1]{$Q_{tail}${}}
 \newcommand{\head}[1]{$Q_{head}${}}
@@ -185,26 +184,27 @@ respectively.
 	
 	\item {\textbf{Queries with Multiple Entities}:} There are several queries in the log with multiple entities. 
 	On average tail queries have more entities than head. \textbf{Do tail queries inquire about entities in the head?} The percentage of 		tail queries containing only head entities, only tail entities ($\in$ \etail{} $\setminus$ \ehead{}) or both is shown in 		Figure \ref{img:headTailEntPercent}.
-	\vspace{10mm}
-	\begin{figure}	
-	\centering
-	\begin{subfigure}
-		\centering
-		%\begin{center}
+	
+	%\begin{figure}	
+	%\begin{subfigure}
+		\vspace{10mm}
+		\begin{center}
 		\includegraphics[width=0.6\columnwidth]{img/head-tail-ent-spot-dist.eps}
-		\caption{Frequency distributions for spots and entities in \head{} (spot-head, ent-head) and \tail{} (spot-tail, ent-tail)}
+		%\caption{Frequency distributions for spots and entities in \head{} (spot-head, ent-head) and \tail{} (spot-tail, ent-tail)}
 		\label{img:distributions}
-	\end{subfigure}
-	%\end{center}
-	\begin{subfigure}
-		%\begin{center}
-		\centering
+		\end{center}
+	%\end{subfigure}
+		
+	%\begin{subfigure}
+		\vspace{10mm}
+		\begin{center}
+		%\centering
 		\includegraphics[width=0.5\columnwidth]{img/entity-head-tail-count.eps}
-		\caption{Percentage of tail queries with only head, only tail or both entities}
+		%\caption{Percentage of tail queries with only head, only tail or both entities}
 		\label{img:headTailEntPercent}
-	%\end{center}
-	\end{subfigure}
-	\end{figure}
+		\end{center}
+	%\end{subfigure}
+	%\end{figure}
 \end {itemize}
 
 
